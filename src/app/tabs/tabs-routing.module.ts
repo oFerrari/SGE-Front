@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { TabsPage } from './tabs.page';
+import { RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
@@ -9,7 +8,7 @@ const routes: Routes = [
     children: [
       {
         path: 'tab1',
-        loadChildren: () => import('../Login/tab1.module').then(m => m.Tab1PageModule)
+        loadChildren: () => import('../Clientes/tab1.module').then(m => m.Tab1PageModule)
       },
       {
         path: 'tab2',
@@ -21,14 +20,18 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: 'tabs/tab1',
         pathMatch: 'full'
       }
     ]
   },
   {
-    path: '',
-    redirectTo: '/tabs/tab1',
+    path: 'login', // Rota para a tela de login
+    loadChildren: () => import('../login/login.module').then(m => m.LoginPageModule)
+  },
+  {
+    path: '', // Redirecionar a raiz para a tela de login
+    redirectTo: 'login',
     pathMatch: 'full'
   }
 ];
