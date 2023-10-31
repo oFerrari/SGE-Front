@@ -20,7 +20,7 @@ export class LoginPage implements OnInit {
   }
 
   logar(){
-    this.nav.navigateForward('home');
+    this.nav.navigateForward('tabs/tab1');
   }
 
   registrar(){

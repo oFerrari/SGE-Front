@@ -9,15 +9,19 @@ const routes: Routes = [
     children: [
       {
         path: 'tab1',
-        loadChildren: () => import('../Clientes/tab1.module').then(m => m.Tab1PageModule)
+        loadChildren: () => import('../paginas/cliente/tab1.module').then(m => m.Tab1PageModule)
       },
       {
         path: 'tab2',
-        loadChildren: () => import('../Dashboard/tab2.module').then(m => m.Tab2PageModule)
+        loadChildren: () => import('../paginas/entrega/tab2.module').then(m => m.Tab2PageModule)
       },
       {
         path: 'tab3',
-        loadChildren: () => import('../Cadastro/tab3.module').then(m => m.Tab3PageModule)
+        loadChildren: () => import('../paginas/cadastro/tab3.module').then(m => m.Tab3PageModule)
+      },
+      {
+        path: 'tab4',
+        loadChildren: () => import('../paginas/tab4/tab4.module').then(m => m.Tab4PageModule)
       },
       {
         path: '',
@@ -28,7 +32,7 @@ const routes: Routes = [
   },
   {
     path: 'login', // Rota para a tela de login
-    loadChildren: () => import('../login/login.module').then(m => m.LoginPageModule)
+    loadChildren: () => import('../paginas/login/login.module').then(m => m.LoginPageModule)
   },
   {
     path: '', // Redirecionar a raiz para a tela de login
