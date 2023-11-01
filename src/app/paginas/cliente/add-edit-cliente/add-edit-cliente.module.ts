@@ -10,7 +10,6 @@ import { AddEditClientePage } from './add-edit-cliente.page';
 
 @NgModule({
   imports: [
-    IonicModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,

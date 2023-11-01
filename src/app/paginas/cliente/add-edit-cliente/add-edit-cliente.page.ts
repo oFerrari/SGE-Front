@@ -31,6 +31,7 @@ export class AddEditClientePage implements OnInit {
          ['Ok'])
       })
     }
+    
     if(this.modoDeEdicao){
       this.clienteService.update(this.clienteForm.value)
       .subscribe(response => {

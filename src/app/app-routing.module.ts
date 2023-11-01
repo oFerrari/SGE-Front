@@ -7,15 +7,14 @@ const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
-    path: 'add-edit-cliente',
-    loadChildren: () => import('./paginas/cliente/add-edit-cliente/add-edit-cliente.module').then( m => m.AddEditClientePageModule)
-  },
-  {
     path: 'sel-cliente',
     loadChildren: () => import('./paginas/cliente/sel-cliente/sel-cliente.module').then( m => m.SelClientePageModule)
   },
-
-
+  {
+    path: 'add-edit-cliente/:id',
+    loadChildren: () => import('./paginas/cliente/add-edit-cliente/add-edit-cliente.module').then( m => m.AddEditClientePageModule)
+  },
+  
 
 ];
 @NgModule({
