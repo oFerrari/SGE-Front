@@ -4,13 +4,14 @@ import { ActivatedRoute } from '@angular/router';
 import { AlertController, NavController } from '@ionic/angular';
 import { ClienteService } from 'src/app/services/domain/cliente.service';
 
-@Component({
-  selector: 'app-tab1',
-  templateUrl: 'tab1.page.html',
-  styleUrls: ['tab1.page.scss']
-})
 
-export class Tab1Page implements OnInit{
+@Component({
+  selector: 'app-add-edit-cliente',
+  templateUrl: './add-edit-cliente.page.html',
+  styleUrls: ['./add-edit-cliente.page.scss'],
+})
+export class AddEditClientePage implements OnInit {
+
   public modoDeEdicao = false;
 
   clienteForm!: FormGroup;

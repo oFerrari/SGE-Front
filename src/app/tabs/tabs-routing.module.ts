@@ -9,7 +9,7 @@ const routes: Routes = [
     children: [
       {
         path: 'tab1',
-        loadChildren: () => import('../paginas/cliente/tab1.module').then(m => m.Tab1PageModule)
+        loadChildren: () => import('../paginas/cliente/add-edit-cliente/add-edit-cliente.module').then(m => m.AddEditClientePageModule)
       },
       {
         path: 'tab2',

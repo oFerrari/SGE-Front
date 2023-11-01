@@ -7,7 +7,7 @@ import { API_CONFIG } from "../../config/api.config";
 @Injectable()
 export class ClienteService {
 
-    constructor(public http: HttpClient){
+    constructor(public http: HttpClient ){
 
     }
 
