@@ -39,8 +39,8 @@ export class AddEditClientePage implements OnInit {
          'O cliente foi atualizado com sucesso',
          ['Ok'])
       })
-    }
-    
+    } 
+
   }
 
   ngOnInit() {

@@ -18,13 +18,27 @@
   </ion-fab>
 
   <ion-list>
-    <ion-item-sliding  *ngFor="let cliente of clientes">
+    <ion-item-sliding *ngFor="let cliente of clientes" >
       <ion-item>
         <ion-label>
           <h2>{{cliente.nome}}</h2>
           <p>{{cliente.endereco}}</p>
+          <ion-button (click)="detalhesCliente(cliente.id)">
+            Ver Detalhes
+          </ion-button>
         </ion-label>
       </ion-item>
+
+      <ion-card *ngIf="clienteSelecionadoId === cliente.id">
+        <ion-card-header>
+          <ion-card-title>{{cliente.nome}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p>Endereço: {{cliente.endereco}}</p>
+           Adicione aqui outros atributos do cliente 
+        </ion-card-content>
+        <ion-button (click)="fecharDetalhesCliente()">Fechar Detalhes</ion-button>
+      </ion-card>
 
       <ion-item-options side="end">
         <ion-item-option routerLink="/add-edit-cliente/{{cliente.id}}">

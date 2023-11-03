@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 import { ClienteDTO } from 'src/app/models/ClienteDTO';
 import { ClienteService } from 'src/app/services/domain/cliente.service';
 
@@ -9,38 +9,97 @@ import { ClienteService } from 'src/app/services/domain/cliente.service';
   styleUrls: ['./sel-cliente.page.scss'],
 })
 export class SelClientePage implements OnInit {
+  clientes: ClienteDTO[] = [];
+  clienteSelecionado: any = null;
+  clienteSelecionadoId: number | null = null;
 
-  clientes!: ClienteDTO[];
 
-  constructor(public clienteService: ClienteService,
-              private navController: NavController) { }
+  constructor(
+    public clienteService: ClienteService,
+    private navController: NavController,
+    private alertController: AlertController,
+  ) {}
 
-  //findall().subscribe(res => {}, err => {})
-  ionViewDidEnter(){
-    this.clienteService.findAll()
-                           .subscribe({
-                              next: 
-                                (response) => this.clientes = response,                              
-                              error:
-                                (error) => console.log(error)
-                           });
+  detalhesCliente(clienteId: number) {
+    this.clienteSelecionadoId = clienteId;
   }
 
-  addEditCliente(){
+  /* detalhesCliente(cliente: ClienteDTO) {
+    this.clienteService.findById(cliente.id).subscribe(
+      (response) => (this.clienteSelecionado = response),
+      (error) => console.error(error)
+    );
+  } */
+
+  
+  fecharDetalhesCliente() {
+    this.clienteSelecionadoId = null;
+  }
+
+  ionViewDidEnter() {
+    this.atualizarClientes();
+  }
+
+  addEditCliente() {
     this.navController.navigateForward('add-edit-cliente');
   }
 
-  excluirCliente(id: number){
-    this.clienteService.delete(id)
-                           .subscribe({
-                              next: 
-                                (response) => window.location.reload(),                              
-                              error:
-                                (error) => console.log(error)
-                           });
+  async excluirCliente(id: number) {
+    const alert = await this.alertController.create({
+      header: 'Confirmar Exclusão',
+      message: 'Tem certeza de que deseja excluir este cliente?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+        },
+        {
+          text: 'Excluir',
+          handler: () => {
+            this.clienteService.delete(id).subscribe(
+              (response) => {
+                this.presentAlert('Sucesso', 'O cliente foi apagado com sucesso', ['Ok']);
+                this.atualizarClientes();
+              },
+              (error) => {
+                if (error.status === 400) {
+                  this.presentAlert('Ops', 'Este usuário pode estar sendo usado', ['Ok']);
+                } else {
+                  this.presentAlert('Erro', 'Ocorreu um erro ao excluir o cliente', ['Ok']);
+                }
+              }
+            );
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+  }
+
+  async presentAlert(header: string, message: string, buttons: string[]) {
+    const alert = await this.alertController.create({
+      header,
+      message,
+      buttons: buttons.map((buttonText) => ({
+        text: buttonText,
+      })),
+    });
+
+    await alert.present();
+  }
+
+  private atualizarClientes() {
+    this.clienteService.findAll().subscribe(
+      (response) => (this.clientes = response),
+      (error) => {
+        console.error(error);
+        this.presentAlert('Erro', 'Ocorreu um erro ao buscar os clientes', ['Ok']);
+      }
+    );
   }
 
   ngOnInit() {
+    this.atualizarClientes();
   }
-
 }
