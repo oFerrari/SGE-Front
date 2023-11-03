@@ -28,7 +28,7 @@ export class AddEditClientePage implements OnInit {
       .subscribe(response => {
        this.presentAlert('Sucesso',
          'O cliente foi salvo com sucesso',
-         ['Ok'])
+         ['Ok']);
       })
     }
     
@@ -84,7 +84,7 @@ export class AddEditClientePage implements OnInit {
         {
           text: 'Ok',
           handler: () => {
-            this.navController.navigateForward('sel-cliente');
+            this.navController.navigateForward('tabs/tab1');
           }
         }
       ]
