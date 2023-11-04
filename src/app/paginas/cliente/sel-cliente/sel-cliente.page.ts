@@ -10,7 +10,7 @@ import { ClienteService } from 'src/app/services/domain/cliente.service';
 })
 export class SelClientePage implements OnInit {
   clientes: ClienteDTO[] = [];
-  clienteSelecionado: any = null;
+ /*  clienteSelecionado: any = null; */
   clienteSelecionadoId: number | null = null;
 
 

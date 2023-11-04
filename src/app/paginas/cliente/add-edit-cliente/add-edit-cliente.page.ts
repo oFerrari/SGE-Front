@@ -11,6 +11,7 @@ import { ClienteService } from 'src/app/services/domain/cliente.service';
   styleUrls: ['./add-edit-cliente.page.scss'],
 })
 export class AddEditClientePage implements OnInit {
+  
 
   public modoDeEdicao = false;
 
@@ -92,4 +93,6 @@ export class AddEditClientePage implements OnInit {
 
     await alert.present();
   }
+  
+  
 }
