@@ -37,12 +37,29 @@ export class SelClientePage implements OnInit {
   }
 
   ionViewDidEnter() {
-    this.atualizarClientes();
+    this.clienteService.findAll()
+    .subscribe({
+       next: 
+         (response) => this.clientes = response,                              
+       error:
+         (error) => console.log(error)
+    });
   }
 
   addEditCliente() {
     this.navController.navigateForward('add-edit-cliente');
   }
+
+
+ /*  excluirCliente(id: number){
+    this.clienteService.delete(id)
+                           .subscribe({
+                              next: 
+                                (response) => window.location.reload(),                              
+                              error:
+                                (error) => console.log(error)
+                           });
+  } */
 
   async excluirCliente(id: number) {
     const alert = await this.alertController.create({
@@ -58,8 +75,8 @@ export class SelClientePage implements OnInit {
           handler: () => {
             this.clienteService.delete(id).subscribe(
               (response) => {
+                this.clientes = this.clientes.filter(cliente => cliente.id !== id); // Atualize a lista de clientes
                 this.presentAlert('Sucesso', 'O cliente foi apagado com sucesso', ['Ok']);
-                this.atualizarClientes();
               },
               (error) => {
                 if (error.status === 400) {
@@ -73,9 +90,10 @@ export class SelClientePage implements OnInit {
         },
       ],
     });
-
+  
     await alert.present();
   }
+  
 
   async presentAlert(header: string, message: string, buttons: string[]) {
     const alert = await this.alertController.create({
@@ -89,17 +107,7 @@ export class SelClientePage implements OnInit {
     await alert.present();
   }
 
-  private atualizarClientes() {
-    this.clienteService.findAll().subscribe(
-      (response) => (this.clientes = response),
-      (error) => {
-        console.error(error);
-        this.presentAlert('Erro', 'Ocorreu um erro ao buscar os clientes', ['Ok']);
-      }
-    );
-  }
 
   ngOnInit() {
-    this.atualizarClientes();
   }
 }
