@@ -32,7 +32,7 @@ export class AddEditClientePage implements OnInit {
          ['Ok']);
       })
     }
-    
+
     if(this.modoDeEdicao){
       this.clienteService.update(this.clienteForm.value)
       .subscribe(response => {
@@ -75,9 +75,8 @@ export class AddEditClientePage implements OnInit {
     }
     
   }
-
-  async presentAlert(header: string,
-    message: string, buttons: string[],) {
+  
+  async presentAlert(header: string, message: string, buttons: string[]) {
     const alert = await this.alertController.create({
       header,
       message,
@@ -85,7 +84,9 @@ export class AddEditClientePage implements OnInit {
         {
           text: 'Ok',
           handler: () => {
-            this.navController.navigateForward('tabs/tab1');
+            
+            this.navController.navigateBack('tabs/tab1');
+            
           }
         }
       ]
@@ -93,6 +94,5 @@ export class AddEditClientePage implements OnInit {
 
     await alert.present();
   }
-  
   
 }

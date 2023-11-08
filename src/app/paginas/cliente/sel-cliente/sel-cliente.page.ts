@@ -10,7 +10,6 @@ import { ClienteService } from 'src/app/services/domain/cliente.service';
 })
 export class SelClientePage implements OnInit {
   clientes: ClienteDTO[] = [];
- /*  clienteSelecionado: any = null; */
   clienteSelecionadoId: number | null = null;
 
 
@@ -19,11 +18,7 @@ export class SelClientePage implements OnInit {
     private navController: NavController,
     private alertController: AlertController,
   ) {}
-
-  detalhesCliente(clienteId: number) {
-    this.clienteSelecionadoId = clienteId;
-  }
-
+  
   /* detalhesCliente(cliente: ClienteDTO) {
     this.clienteService.findById(cliente.id).subscribe(
       (response) => (this.clienteSelecionado = response),
@@ -31,19 +26,24 @@ export class SelClientePage implements OnInit {
     );
   } */
 
+  detalhesCliente(clienteId: number) {
+    this.clienteSelecionadoId = clienteId;
+  }
+
+
   
   fecharDetalhesCliente() {
     this.clienteSelecionadoId = null;
   }
 
-  ionViewDidEnter() {
+  ionViewDidEnter(){
     this.clienteService.findAll()
-    .subscribe({
-       next: 
-         (response) => this.clientes = response,                              
-       error:
-         (error) => console.log(error)
-    });
+                           .subscribe({
+                              next: 
+                                (response) => this.clientes = response,                              
+                              error:
+                                (error) => console.log(error)
+                           });
   }
 
   addEditCliente() {
@@ -75,7 +75,7 @@ export class SelClientePage implements OnInit {
           handler: () => {
             this.clienteService.delete(id).subscribe(
               (response) => {
-                this.clientes = this.clientes.filter(cliente => cliente.id !== id); // Atualize a lista de clientes
+                this.clientes = this.clientes.filter(cliente => cliente.id !== id);
                 this.presentAlert('Sucesso', 'O cliente foi apagado com sucesso', ['Ok']);
               },
               (error) => {
