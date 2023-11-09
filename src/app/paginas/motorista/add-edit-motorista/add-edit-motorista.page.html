@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Clientes</ion-title>
+    <ion-title>Motoristas</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,44 +12,44 @@
 
   <ion-fab slot="fixed" vertical="bottom" 
            horizontal="end" [edge]="true">
-    <ion-fab-button routerLink="/add-edit-cliente/-1">
+    <ion-fab-button routerLink="/add-edit-motorista/-1">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 
   <ion-list>
     <ion-searchbar animated="true" [(ngModel)]="searchTerm" placeholder="Pesquise por nome ou endereço"></ion-searchbar>
-    <ion-item-sliding *ngFor="let cliente of filterClientes()" >
+    <ion-item-sliding *ngFor="let motorista of filterMotoristas()" >
       <ion-item>
         <ion-label>
-          <h2>{{cliente.nome}}</h2>
-          <p>{{cliente.endereco}}</p>
-          <ion-button (click)="detalhesCliente(cliente.id)">
+          <h2>{{motorista.nome}}</h2>
+          <p>{{motorista.endereco}}</p>
+          <ion-button (click)="detalhesMotorista(motorista.id)">
             Ver Detalhes
           </ion-button>
         </ion-label>
       </ion-item>
 
-      <ion-card *ngIf="clienteSelecionadoId === cliente.id">
+      <ion-card *ngIf="motoristaSelecionadoId === motorista.id">
         <ion-card-header>
-          <ion-card-title>{{cliente.nome}}</ion-card-title>
+          <ion-card-title>{{motorista.nome}}</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          <p>Endereço: {{cliente.endereco}}</p>
-          <p>Tipo: {{cliente.tipo}}</p>
-          <p>Documento: {{cliente.documento}}</p>
-          <p>Telefone: {{cliente.telefone}}</p>
-          <p>Email: {{cliente.email}}</p>
+          <p>Endereço: {{motorista.endereco}}</p>
+          <p>Tipo: {{motorista.tipo}}</p>
+          <p>Documento: {{motorista.documento}}</p>
+          <p>Telefone: {{motorista.telefone}}</p>
+          <p>Email: {{motorista.email}}</p>
         </ion-card-content>
-        <ion-button (click)="fecharDetalhesCliente()">Fechar Detalhes</ion-button>
+        <ion-button (click)="fecharDetalhesMotorista()">Fechar Detalhes</ion-button>
       </ion-card>
 
       <ion-item-options side="end">
-        <ion-item-option routerLink="/add-edit-cliente/{{cliente.id}}">
+        <ion-item-option routerLink="/add-edit-motorista/{{motorista.id}}">
           <ion-icon slot="start" name="create"></ion-icon>
           Editar
         </ion-item-option>
-        <ion-item-option color="secondary" (click)="excluirCliente(cliente.id)">
+        <ion-item-option color="secondary" (click)="excluirMotorista(motorista.id)">
           <ion-icon slot="start" name="trash"></ion-icon>
           Deletar
         </ion-item-option>

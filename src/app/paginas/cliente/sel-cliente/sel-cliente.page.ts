@@ -11,30 +11,13 @@ import { ClienteService } from 'src/app/services/domain/cliente.service';
 export class SelClientePage implements OnInit {
   clientes: ClienteDTO[] = [];
   clienteSelecionadoId: number | null = null;
-
+  searchTerm: string = '';
 
   constructor(
     public clienteService: ClienteService,
     private navController: NavController,
     private alertController: AlertController,
   ) {}
-  
-  /* detalhesCliente(cliente: ClienteDTO) {
-    this.clienteService.findById(cliente.id).subscribe(
-      (response) => (this.clienteSelecionado = response),
-      (error) => console.error(error)
-    );
-  } */
-
-  detalhesCliente(clienteId: number) {
-    this.clienteSelecionadoId = clienteId;
-  }
-
-
-  
-  fecharDetalhesCliente() {
-    this.clienteSelecionadoId = null;
-  }
 
   ionViewDidEnter(){
     this.clienteService.findAll()
@@ -46,20 +29,30 @@ export class SelClientePage implements OnInit {
                            });
   }
 
-  addEditCliente() {
-    this.navController.navigateForward('add-edit-cliente');
+  filterClientes(): ClienteDTO[] {
+    if (this.searchTerm === '') {
+      return this.clientes;
+    }
+
+    const filteredClientes = this.clientes.filter((cliente) => {
+      return cliente.nome.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        cliente.endereco.toLowerCase().includes(this.searchTerm.toLowerCase());
+    });
+
+    return filteredClientes;
   }
 
+  detalhesCliente(clienteId: number) {
+    this.clienteSelecionadoId = clienteId;
+  }
 
- /*  excluirCliente(id: number){
-    this.clienteService.delete(id)
-                           .subscribe({
-                              next: 
-                                (response) => window.location.reload(),                              
-                              error:
-                                (error) => console.log(error)
-                           });
-  } */
+  fecharDetalhesCliente() {
+    this.clienteSelecionadoId = null;
+  }
+
+  addEditCliente() {
+    this.navController.navigateForward('add-edit-cliente')
+  }
 
   async excluirCliente(id: number) {
     const alert = await this.alertController.create({
@@ -90,10 +83,9 @@ export class SelClientePage implements OnInit {
         },
       ],
     });
-  
+
     await alert.present();
   }
-  
 
   async presentAlert(header: string, message: string, buttons: string[]) {
     const alert = await this.alertController.create({
@@ -107,7 +99,7 @@ export class SelClientePage implements OnInit {
     await alert.present();
   }
 
-
   ngOnInit() {
+    
   }
 }

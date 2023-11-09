@@ -2,41 +2,39 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AlertController, NavController } from '@ionic/angular';
-import { ClienteService } from 'src/app/services/domain/cliente.service';
-
+import { MotoristaService } from 'src/app/services/domain/motorista.service';
 
 @Component({
-  selector: 'app-add-edit-cliente',
-  templateUrl: './add-edit-cliente.page.html',
-  styleUrls: ['./add-edit-cliente.page.scss'],
+  selector: 'app-add-edit-motorista',
+  templateUrl: './add-edit-motorista.page.html',
+  styleUrls: ['./add-edit-motorista.page.scss'],
 })
-export class AddEditClientePage implements OnInit {
-
+export class AddEditMotoristaPage implements OnInit {
   public modoDeEdicao = false;
 
-  clienteForm!: FormGroup;
+  motoristaForm!: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
               private alertController: AlertController,
               private navController: NavController,
               private route: ActivatedRoute,
-              public clienteService: ClienteService) { }
+              public motoristaService: MotoristaService) { }
 
   submit(){
     if(!this.modoDeEdicao){
-      this.clienteService.insert(this.clienteForm.value)
+      this.motoristaService.insert(this.motoristaForm.value)
       .subscribe(response => {
        this.presentAlert('Sucesso',
-         'O cliente foi salvo com sucesso',
+         'O motorista foi salvo com sucesso',
          ['Ok']);
       })
     }
 
     if(this.modoDeEdicao){
-      this.clienteService.update(this.clienteForm.value)
+      this.motoristaService.update(this.motoristaForm.value)
       .subscribe(response => {
        this.presentAlert('Sucesso',
-         'O cliente foi atualizado com sucesso',
+         'O motorista foi atualizado com sucesso',
          ['Ok'])
       })
     } 
@@ -50,12 +48,12 @@ export class AddEditClientePage implements OnInit {
     
     if(id > 0){
       this.modoDeEdicao = true;
-      this.clienteService.findById(id).subscribe(response => {
-        this.clienteForm = this.formBuilder.group({
+      this.motoristaService.findById(id).subscribe(response => {
+        this.motoristaForm = this.formBuilder.group({
           id: [response.id],      
           nome: [response.nome, Validators.required],
-          tipo: [response.tipo, Validators.required], 
-          documento: [response.documento, Validators.required], 
+          CPF: [response.CPF, Validators.required], 
+          CNH: [response.CNH, Validators.required], 
           endereco: [response.endereco, Validators.required], 
           telefone: [response.telefone, Validators.required], 
           email: [response.email, Validators.required]
@@ -63,17 +61,17 @@ export class AddEditClientePage implements OnInit {
       })
     } else {
       this.modoDeEdicao = false;
-      this.clienteForm = this.formBuilder.group({
+      this.motoristaForm = this.formBuilder.group({
         id,
         nome: ['', Validators.required],
-        tipo: ['', Validators.required], 
-        documento: ['', Validators.required], 
+        CPF: ['', Validators.required], 
+        CNH: ['', Validators.required], 
         endereco: ['', Validators.required], 
         telefone: ['', Validators.required], 
         email: ['', Validators.required]
       })
     }
-    this.clienteService.delete(id)
+    this.motoristaService.delete(id)
                            .subscribe({
                               next: 
                                 (response) => window.location.reload(),                              

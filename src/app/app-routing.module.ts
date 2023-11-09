@@ -12,9 +12,19 @@ const routes: Routes = [
   },
   {
     path: 'add-edit-cliente/:id',
-    loadChildren: () => import('./paginas/cliente/add-edit-cliente/add-edit-cliente.module').then( m => m.AddEditClientePageModule)
+    loadChildren: () => import('./paginas/cliente/add-edit-cliente/add-edit-cliente.module').then((m) => m.AddEditClientePageModule
+      ),
   },
-  
+  {
+    path: 'sel-motorista',
+    loadChildren: () => import('./paginas/motorista/sel-motorista/sel-motorista.module').then( m => m.SelMotoristaPageModule)
+  },
+  {
+    path: 'add-edit-motorista',
+    loadChildren: () => import('./paginas/motorista/add-edit-motorista/add-edit-motorista.module').then( m => m.AddEditMotoristaPageModule)
+  },
+
+
 
 ];
 @NgModule({
@@ -23,4 +33,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
