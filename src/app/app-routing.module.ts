@@ -20,6 +20,10 @@ const routes: Routes = [
     loadChildren: () => import('./paginas/motorista/sel-motorista/sel-motorista.module').then( m => m.SelMotoristaPageModule)
   },
   {
+    path: 'add-edit-motorista',
+    loadChildren: () => import('./paginas/motorista/add-edit-motorista/add-edit-motorista.module').then( m => m.AddEditMotoristaPageModule)
+  },
+  {
     path: 'add-edit-motorista/:id',
     loadChildren: () => import('./paginas/motorista/add-edit-motorista/add-edit-motorista.module').then( m => m.AddEditMotoristaPageModule)
   },

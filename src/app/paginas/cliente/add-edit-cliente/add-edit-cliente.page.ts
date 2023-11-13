@@ -73,13 +73,7 @@ export class AddEditClientePage implements OnInit {
         email: ['', Validators.required]
       })
     }
-    this.clienteService.delete(id)
-                           .subscribe({
-                              next: 
-                                (response) => window.location.reload(),                              
-                              error:
-                                (error) => console.log(error)
-                           });
+    
   }
   
   async presentAlert(header: string, message: string, buttons: string[]) {
@@ -100,6 +94,5 @@ export class AddEditClientePage implements OnInit {
     await alert.present();
   }
   
-
   
 }

@@ -71,13 +71,7 @@ export class AddEditMotoristaPage implements OnInit {
         email: ['', Validators.required],
       })
     }
-    this.motoristaService.delete(id)
-                           .subscribe({
-                              next: 
-                                (response) => window.location.reload(),                              
-                              error:
-                                (error) => console.log(error)
-                           });
+    
   }
   
   async presentAlert(header: string, message: string, buttons: string[]) {
@@ -88,7 +82,7 @@ export class AddEditMotoristaPage implements OnInit {
         {
           text: 'Ok',
           handler: () => {
-            this.navController.navigateForward('tabs/tab3');            
+            this.navController.navigateForward('tabs/tab2');            
           }
         }
       ]
@@ -97,5 +91,7 @@ export class AddEditMotoristaPage implements OnInit {
 
     await alert.present();
   }
+
+  
   
 }
