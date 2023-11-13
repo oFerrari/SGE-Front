@@ -90,7 +90,7 @@ export class AddEditClientePage implements OnInit {
         {
           text: 'Ok',
           handler: () => {
-            this.navController.navigateForward('tabs/tab1');            
+            this.navController.navigateForward('tabs/tab2');            
           }
         }
       ]

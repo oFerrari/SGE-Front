@@ -52,11 +52,11 @@ export class AddEditMotoristaPage implements OnInit {
         this.motoristaForm = this.formBuilder.group({
           id: [response.id],      
           nome: [response.nome, Validators.required],
-          CPF: [response.CPF, Validators.required], 
-          CNH: [response.CNH, Validators.required], 
+          cpf: [response.cpf, Validators.required], 
+          cnh: [response.cnh, Validators.required], 
           endereco: [response.endereco, Validators.required], 
           telefone: [response.telefone, Validators.required], 
-          email: [response.email, Validators.required]
+          email: [response.email, Validators.required],
         })
       })
     } else {
@@ -64,11 +64,11 @@ export class AddEditMotoristaPage implements OnInit {
       this.motoristaForm = this.formBuilder.group({
         id,
         nome: ['', Validators.required],
-        CPF: ['', Validators.required], 
-        CNH: ['', Validators.required], 
+        cpf: ['', Validators.required], 
+        cnh: ['', Validators.required], 
         endereco: ['', Validators.required], 
         telefone: ['', Validators.required], 
-        email: ['', Validators.required]
+        email: ['', Validators.required],
       })
     }
     this.motoristaService.delete(id)
@@ -88,7 +88,7 @@ export class AddEditMotoristaPage implements OnInit {
         {
           text: 'Ok',
           handler: () => {
-            this.navController.navigateForward('tabs/tab1');            
+            this.navController.navigateForward('tabs/tab3');            
           }
         }
       ]
@@ -97,7 +97,5 @@ export class AddEditMotoristaPage implements OnInit {
 
     await alert.present();
   }
-  
-
   
 }

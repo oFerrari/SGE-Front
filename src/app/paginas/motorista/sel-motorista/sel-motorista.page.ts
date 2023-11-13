@@ -36,7 +36,7 @@ export class SelMotoristaPage implements OnInit {
 
     const filteredMotoristas = this.motoristas.filter((motorista) => {
       return motorista.nome.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-        motorista.endereco.toLowerCase().includes(this.searchTerm.toLowerCase());
+        motorista.cnh.toLowerCase().includes(this.searchTerm.toLowerCase());
     });
 
     return filteredMotoristas;

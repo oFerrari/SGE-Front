@@ -13,11 +13,11 @@ const routes: Routes = [
       },
       {
         path: 'tab2',
-        loadChildren: () => import('../paginas/entrega/tab2.module').then(m => m.Tab2PageModule)
+        loadChildren: () => import('../paginas/cadastro/tab3.module').then(m => m.Tab3PageModule)
       },
       {
         path: 'tab3',
-        loadChildren: () => import('../paginas/cadastro/tab3.module').then(m => m.Tab3PageModule)
+        loadChildren: () => import('../paginas/motorista/sel-motorista/sel-motorista.module').then(m => m.SelMotoristaPageModule)
       },
       {
         path: 'tab4',
@@ -25,7 +25,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: 'tabs/tab1',
+        redirectTo: 'tabs/tab2',
         pathMatch: 'full'
       }
     ]

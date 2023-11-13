@@ -1,9 +1,12 @@
+import { VeiculoDTO } from "./VeiculoDTO";
+
 export interface MotoristaDTO {
     id: number; 
     nome: string;
-    CPF: string; 
-    CNH: string; 
+    cpf: string; 
+    cnh: string; 
     endereco: string; 
     telefone: string; 
     email: string;
+    veiculos: VeiculoDTO[];
 }
