@@ -17,49 +17,53 @@ export class AddEditVeiculoPage implements OnInit {
   motoristas: any[] = [];
 
   constructor(private formBuilder: FormBuilder,
-              private alertController: AlertController,
-              private navController: NavController,
-              private route: ActivatedRoute,
-              public veiculoService: VeiculoService,
-              public motoristaService: MotoristaService) { }
+    private alertController: AlertController,
+    private navController: NavController,
+    private route: ActivatedRoute,
+    public veiculoService: VeiculoService,
+    public motoristaService: MotoristaService) { }
 
-  submit(){
-    if(!this.modoDeEdicao){
-      this.veiculoService.insert(this.veiculoForm.value)
-      .subscribe(response => {
-       this.presentAlert('Sucesso',
-         'O veiculo foi salvo com sucesso',
-         ['Ok']);
-      })
+    submit() {
+      console.log('Form Value:', this.veiculoForm.value);
+    
+      if (!this.modoDeEdicao) {
+        const payload = { ...this.veiculoForm.value, motoristaId: this.veiculoForm.value.motorista };
+        console.log('Payload for Insert:', payload);
+    
+        this.veiculoService.insert(payload).subscribe(response => {
+          this.presentAlert('Sucesso', 'O veiculo foi salvo com sucesso', ['Ok']);
+        });
+      }
+    
+      if (this.modoDeEdicao) {
+        const payload = { ...this.veiculoForm.value, motoristaId: this.veiculoForm.value.motorista };
+        console.log('Payload for Update:', payload);
+    
+        this.veiculoService.update(payload).subscribe(response => {
+          this.presentAlert('Sucesso', 'O veiculo foi atualizado com sucesso', ['Ok']);
+        });
+      }
     }
+    
 
-    if(this.modoDeEdicao){
-      this.veiculoService.update(this.veiculoForm.value)
-      .subscribe(response => {
-       this.presentAlert('Sucesso',
-         'O veiculo foi atualizado com sucesso',
-         ['Ok'])
-      })
-    } 
-
-  }
-  
 
   ngOnInit() {
+
     this.loadMotoristas()
 
     const id: number = Number(this.route.snapshot.paramMap.get('id'));
-    
-    if(id > 0){
+
+    if (id > 0) {
       this.modoDeEdicao = true;
       this.veiculoService.findById(id).subscribe(response => {
         this.veiculoForm = this.formBuilder.group({
-          id: [response.id],      
+          id: [response.id],
           modelo: [response.modelo, Validators.required],
-          placa: [response.placa, Validators.required], 
-          renavam: [response.renavam, Validators.required], 
-          capacidade: [response.capacidade, Validators.required], 
-          motoristaId: ['', Validators.required],
+          placa: [response.placa, Validators.required],
+          renavam: [response.renavam, Validators.required],
+          capacidade: [response.capacidade, Validators.required],
+          motoristaId: response.motorista ? response.motorista.id : null,
+
         })
       })
     } else {
@@ -67,13 +71,14 @@ export class AddEditVeiculoPage implements OnInit {
       this.veiculoForm = this.formBuilder.group({
         id,
         modelo: ['', Validators.required],
-        placa: ['', Validators.required], 
-        renavam: ['', Validators.required], 
-        capacidade: ['', Validators.required], 
-        motoristaId: ['']
+        placa: ['', Validators.required],
+        renavam: ['', Validators.required],
+        capacidade: ['', Validators.required],
+        motoristaId: ['', Validators.required],
+
       })
     }
-    
+
   }
 
   loadMotoristas() {
@@ -86,9 +91,9 @@ export class AddEditVeiculoPage implements OnInit {
       }
     );
   }
-  
-  
-  
+
+
+
   async presentAlert(header: string, message: string, buttons: string[]) {
     const alert = await this.alertController.create({
       header,
@@ -97,15 +102,15 @@ export class AddEditVeiculoPage implements OnInit {
         {
           text: 'Ok',
           handler: () => {
-            this.navController.navigateForward('tabs/tab2');            
+            this.navController.navigateForward('tabs/tab2');
           }
         }
       ]
     });
-    
+
 
     await alert.present();
   }
-  
-  
+
+
 }

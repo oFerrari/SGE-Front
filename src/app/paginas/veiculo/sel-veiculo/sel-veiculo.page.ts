@@ -47,9 +47,6 @@ export class SelVeiculoPage implements OnInit {
   detalhesVeiculo(veiculo: VeiculoDTO) {
     this.veiculoSelecionadoId = veiculo.id;
   }
-  
-  
-
 
   fecharDetalhesVeiculo() {
     this.veiculoSelecionadoId = null;
