@@ -27,6 +27,20 @@ const routes: Routes = [
     path: 'add-edit-motorista/:id',
     loadChildren: () => import('./paginas/motorista/add-edit-motorista/add-edit-motorista.module').then( m => m.AddEditMotoristaPageModule)
   },
+  {
+    path: 'sel-veiculo',
+    loadChildren: () => import('./paginas/veiculo/sel-veiculo/sel-veiculo.module').then( m => m.SelVeiculoPageModule)
+  },
+  {
+    path: 'add-edit-veiculo',
+    loadChildren: () => import('./paginas/veiculo/add-edit-veiculo/add-edit-veiculo.module').then( m => m.AddEditVeiculoPageModule)
+  },
+  {
+    path: 'add-edit-veiculo/:id',
+    loadChildren: () => import('./paginas/veiculo/add-edit-veiculo/add-edit-veiculo.module').then( m => m.AddEditVeiculoPageModule)
+  },
+
+
 
 
 

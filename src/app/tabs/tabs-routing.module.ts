@@ -21,7 +21,7 @@ const routes: Routes = [
       },
       {
         path: 'tab4',
-        loadChildren: () => import('../paginas/tab4/tab4.module').then(m => m.Tab4PageModule)
+        loadChildren: () => import('../paginas/veiculo/sel-veiculo/sel-veiculo.module').then( m => m.SelVeiculoPageModule)
       },
       {
         path: '',

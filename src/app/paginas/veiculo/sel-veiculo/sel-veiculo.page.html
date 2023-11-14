@@ -1,0 +1,61 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Veiculos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end" [edge]="true">
+    <ion-fab-button routerLink="/add-edit-veiculo/-1">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-list>
+    <ion-searchbar animated="true" [(ngModel)]="searchTerm" placeholder="Pesquise por nome ou cnh"></ion-searchbar>
+    <ion-item-sliding *ngFor="let veiculo of filterVeiculos()">
+      <ion-item>
+        <ion-label>
+          <h2>{{veiculo.modelo}}</h2>
+          <p>{{veiculo.placa}}</p>
+          <ion-button (click)="detalhesVeiculo(veiculo)">
+            Ver Detalhes
+          </ion-button>
+        </ion-label>
+      </ion-item>
+
+      <ion-card *ngIf="veiculoSelecionadoId === veiculo.id">
+        <ion-card-header>
+          <ion-card-title>{{veiculo.modelo}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p>Placa: {{veiculo.placa}}</p>
+          <p>Renavam: {{veiculo.renavam}}</p>
+          <p>Capacidade: {{veiculo.capacidade}}</p>
+          
+          <b>Motorista:</b>
+          <p>{{ veiculo.nomeMotorista }}</p>
+        </ion-card-content>
+        <ion-button (click)="fecharDetalhesVeiculo()">Fechar Detalhes</ion-button>
+      </ion-card>
+
+      <ion-item-options side="end">
+        <ion-item-option routerLink="/add-edit-veiculo/{{veiculo.id}}">
+          <ion-icon slot="start" name="create"></ion-icon>
+          Editar
+        </ion-item-option>
+        <ion-item-option color="secondary" (click)="excluirVeiculo(veiculo.id)">
+          <ion-icon slot="start" name="trash"></ion-icon>
+          Deletar
+        </ion-item-option>
+      </ion-item-options>
+
+    </ion-item-sliding>
+  </ion-list>
+
+</ion-content>

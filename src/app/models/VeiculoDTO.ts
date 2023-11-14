@@ -6,5 +6,6 @@ export interface VeiculoDTO {
     renavam: string; 
     modelo: string; 
     capacidade: string; 
-    motorista: MotoristaDTO;
+    motorista: MotoristaDTO
+    nomeMotorista?: string;
 }

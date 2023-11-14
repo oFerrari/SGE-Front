@@ -3,40 +3,46 @@ import { Observable } from "rxjs/internal/Observable";
 import { Injectable } from "@angular/core";
 import { API_CONFIG } from "../../config/api.config";
 import { VeiculoDTO } from "src/app/models/VeiculoDTO";
+import { MotoristaDTO } from "src/app/models/MotoristaDTO";
 
 @Injectable()
 export class VeiculoService {
 
-    constructor(public http: HttpClient ){
+    constructor(public http: HttpClient) {
 
     }
 
-    findAll() : Observable<VeiculoDTO[]> {
+    findAll(): Observable<VeiculoDTO[]> {
         return this.http.get<VeiculoDTO[]>(`${API_CONFIG.baseUrl}/veiculos`);
     }
 
-    findById(id: number) : Observable<VeiculoDTO> {
+    findById(id: number): Observable<VeiculoDTO> {
         return this.http.get<VeiculoDTO>(
             `${API_CONFIG.baseUrl}/veiculos/${id}`);
     }
 
-    insert(veiculo: VeiculoDTO){
-        return this.http.post(`${API_CONFIG.baseUrl}/veiculos`, 
-                                veiculo, {
-                                    observe: 'response', 
-                                    responseType: 'text'
-                                });
+    findMotoristaById(id: number): Observable<MotoristaDTO> {
+        return this.http.get<MotoristaDTO>(`${API_CONFIG.baseUrl}/motoristas/${id}`);
     }
 
-    update(veiculo: VeiculoDTO){
-        return this.http.put(`${API_CONFIG.baseUrl}/veiculos/${veiculo.id}`, 
-                                veiculo, {
-                                    observe: 'response', 
-                                    responseType: 'text'
-                                });
+    insert(veiculo: VeiculoDTO) {
+        return this.http.post(`${API_CONFIG.baseUrl}/veiculos`,
+            veiculo, {
+            observe: 'response',
+            responseType: 'text'
+        });
     }
 
-    delete(id: number){
+    update(veiculo: VeiculoDTO) {
+        return this.http.put(`${API_CONFIG.baseUrl}/veiculos/${veiculo.id}`,
+            veiculo, {
+            observe: 'response',
+            responseType: 'text'
+        });
+    }
+
+
+    delete(id: number) {
         return this.http.delete(`${API_CONFIG.baseUrl}/veiculos/${id}`)
     }
 }
