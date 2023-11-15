@@ -27,7 +27,7 @@ export class AddEditVeiculoPage implements OnInit {
       console.log('Form Value:', this.veiculoForm.value);
     
       if (!this.modoDeEdicao) {
-        const payload = { ...this.veiculoForm.value, motoristaId: this.veiculoForm.value.motorista };
+        const payload = this.veiculoForm.value;
         console.log('Payload for Insert:', payload);
     
         this.veiculoService.insert(payload).subscribe(response => {
@@ -36,7 +36,7 @@ export class AddEditVeiculoPage implements OnInit {
       }
     
       if (this.modoDeEdicao) {
-        const payload = { ...this.veiculoForm.value, motoristaId: this.veiculoForm.value.motorista };
+        const payload =this.veiculoForm.value;
         console.log('Payload for Update:', payload);
     
         this.veiculoService.update(payload).subscribe(response => {
@@ -62,7 +62,7 @@ export class AddEditVeiculoPage implements OnInit {
           placa: [response.placa, Validators.required],
           renavam: [response.renavam, Validators.required],
           capacidade: [response.capacidade, Validators.required],
-          motoristaId: response.motorista ? response.motorista.id : null,
+          motoristaId: [response.motorista ? response.motorista.id : null, Validators.required],
 
         })
       })

@@ -31,10 +31,12 @@
       <ion-input formControlName="capacidade" type="text"></ion-input>
     </ion-item>
     <ion-select formControlName="motoristaId">
-      <ion-select-option *ngFor="let motorista of motoristas" [value]="motorista">
-        {{ motorista?.nome }}
+      <ion-select-option *ngFor="let motorista of motoristas" [value]="motorista.id">
+        {{ motorista.nome }}
       </ion-select-option>
     </ion-select>
+    
+    
     
     
 
