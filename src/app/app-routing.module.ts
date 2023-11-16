@@ -39,6 +39,19 @@ const routes: Routes = [
     path: 'add-edit-veiculo/:id',
     loadChildren: () => import('./paginas/veiculo/add-edit-veiculo/add-edit-veiculo.module').then( m => m.AddEditVeiculoPageModule)
   },
+  {
+    path: 'sel-pedido-entrega',
+    loadChildren: () => import('./paginas/pedido-entrega/sel-pedido-entrega/sel-pedido-entrega.module').then( m => m.SelPedidoEntregaPageModule)
+  },
+  {
+    path: 'add-edit-pedido-entrega',
+    loadChildren: () => import('./paginas/pedido-entrega/add-edit-pedido-entrega/add-edit-pedido-entrega.module').then( m => m.AddEditPedidoEntregaPageModule)
+  },
+  {
+    path: 'add-edit-pedidoEntrega/:id',
+    loadChildren: () => import('./paginas/pedido-entrega/add-edit-pedido-entrega/add-edit-pedido-entrega.module').then( m => m.AddEditPedidoEntregaPageModule)
+  },
+
 
 
 

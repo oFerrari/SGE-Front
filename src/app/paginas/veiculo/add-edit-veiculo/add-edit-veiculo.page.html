@@ -31,10 +31,13 @@
       <ion-input formControlName="capacidade" type="text"></ion-input>
     </ion-item>
     <ion-select formControlName="motoristaId">
+      <ion-label position="floating">Motoristas</ion-label>
+      <ion-select-option value="null" disabled selected>Floating Motoristas</ion-select-option>
       <ion-select-option *ngFor="let motorista of motoristas" [value]="motorista.id">
         {{ motorista.nome }}
       </ion-select-option>
     </ion-select>
+    
     
     
     

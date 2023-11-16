@@ -1,0 +1,66 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref=""></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>
+      Pedido de Entrega
+    </ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <form [formGroup]="pedidoEntregaForm" *ngIf="pedidoEntregaForm" (ngSubmit)="submit()">
+
+    <ion-item>
+      <ion-label position="floating">Descrição</ion-label>
+      <ion-input formControlName="mercadoria" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Origem</ion-label>
+      <ion-input formControlName="origem" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Destino</ion-label>
+      <ion-input formControlName="destino" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Emissão</ion-label>
+      <ion-datetime formControlName="emissao" display-format="DD/MM/YYYY HH:mm"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Data de Entrega</ion-label>
+      <ion-datetime formControlName="dataEntrega" display-format="DD/MM/YYYY HH:mm"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Nome do Veículo</ion-label>
+      <ion-input formControlName="nomeVeiculo" type="text"></ion-input>
+    </ion-item>
+
+    <ion-select formControlName="statusPedido">
+      <ion-select-option value="PENDENTE">Pendente</ion-select-option>
+      <ion-select-option value="EM_TRANSITO">Em Trânsito</ion-select-option>
+      <ion-select-option value="ATRASADO">Atrasado</ion-select-option>
+      <ion-select-option value="CONCLUIDO">Concluído</ion-select-option>
+    </ion-select>
+    
+
+    <ion-button shape="round" expand="block" padding type="submit" *ngIf="!modoDeEdicao">
+      Cadastrar
+    </ion-button>
+
+    <ion-button shape="round" expand="block" padding type="submit" *ngIf="modoDeEdicao">
+      Alterar
+    </ion-button>
+  </form>
+
+</ion-content>

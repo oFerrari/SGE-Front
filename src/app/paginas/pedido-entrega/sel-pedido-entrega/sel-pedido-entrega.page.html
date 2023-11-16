@@ -1,0 +1,87 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Pedidos de Entrega</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end" [edge]="true">
+    <ion-fab-button routerLink="/add-edit-pedidoEntrega/-1">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-list>
+    <ion-searchbar animated="true" [(ngModel)]="searchTerm" placeholder="Pesquise por nome ou cnh"></ion-searchbar>
+    <ion-item-sliding *ngFor="let pedidoEntrega of filterPedidoEntregas()">
+      <ion-item>
+        <ion-label>
+          <h2>{{pedidoEntrega.nomeCliente}}</h2>
+          <p>{{pedidoEntrega.destino}}</p>
+          <p>{{pedidoEntrega.emissao}}</p>
+          <p>{{pedidoEntrega.statusPedido}}</p>
+          <ion-button (click)="detalhesPedidoEntrega(pedidoEntrega.id)">
+            Ver Detalhes
+          </ion-button>
+        </ion-label>
+      </ion-item>
+
+      <ion-card *ngIf="pedidoEntregaSelecionadoId === pedidoEntrega.id">
+        <ion-card-header>
+          <ion-card-title>{{pedidoEntrega.nomeCliente}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p>Descrição: {{pedidoEntrega.mercadoria}}</p>
+          <p>Origem: {{pedidoEntrega.origem}}</p>
+          <p>Endereço: {{pedidoEntrega.destino}}</p>
+          <p>Emissão: {{pedidoEntrega.emissao}}</p>
+          <p>Data Entrega: {{pedidoEntrega.dataEntrega}}</p>
+          <ng-container *ngIf="pedidoEntrega.veiculo && pedidoEntrega.veiculo.nomeMotorista">
+            <p>Motorista: {{ pedidoEntrega.veiculo.nomeMotorista }}</p>
+          </ng-container>
+          <p>Veiculo: {{pedidoEntrega.nomeVeiculo}}</p>
+          
+            
+        
+          
+          
+          
+          
+          <p>{{pedidoEntrega.statusPedido}}</p>
+          <!-- <ng-container *ngIf="pedidoEntrega.veiculos && pedidoEntrega.veiculos.length > 0">
+            <b>VEÍCULOS:</b>
+            <ion-list>
+              <ion-item *ngFor="let veiculo of pedidoEntrega.veiculos">
+                <ion-label>
+                  <h3>{{ veiculo.modelo }}</h3>
+                  <p>Placa: {{ veiculo.placa }}</p>
+                  <p>Renavam: {{ veiculo.renavam }}</p>
+                  <p>Capacidade: {{ veiculo.capacidade }}</p>
+                </ion-label>
+              </ion-item>
+            </ion-list>
+          </ng-container> -->
+        </ion-card-content>
+        <ion-button (click)="fecharDetalhesPedidoEntrega()">Fechar Detalhes</ion-button>
+      </ion-card>
+
+      <ion-item-options side="end">
+        <ion-item-option routerLink="/add-edit-pedidoEntrega/{{pedidoEntrega.id}}">
+          <ion-icon slot="start" name="create"></ion-icon>
+          Editar
+        </ion-item-option>
+        <ion-item-option color="secondary" (click)="excluirPedidoEntrega(pedidoEntrega.id)">
+          <ion-icon slot="start" name="trash"></ion-icon>
+          Deletar
+        </ion-item-option>
+      </ion-item-options>
+
+    </ion-item-sliding>
+  </ion-list>
+
+</ion-content>

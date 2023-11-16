@@ -13,7 +13,7 @@ const routes: Routes = [
       },
       {
         path: 'tab2',
-        loadChildren: () => import('../paginas/cadastro/tab3.module').then(m => m.Tab3PageModule)
+        loadChildren: () => import('../paginas/pedido-entrega/sel-pedido-entrega/sel-pedido-entrega.module').then(m => m.SelPedidoEntregaPageModule)
       },
       {
         path: 'tab3',
