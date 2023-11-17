@@ -1,7 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs/internal/Observable";
 import { PedidoEntregaDTO } from "../../models/PedidoEntregaDTO";
-import { PedidoEntregaDTOFORM } from "../../models/PedidoEntregaDTOFORM";
 import { Injectable } from "@angular/core";
 import { API_CONFIG } from "../../config/api.config";
 
@@ -21,19 +20,21 @@ export class PedidoEntregaService {
             `${API_CONFIG.baseUrl}/pedidoEntregas/${id}`);
     }
 
-    insert(pedidoEntregaForm: PedidoEntregaDTOFORM) {
-        return this.http.post(`${API_CONFIG.baseUrl}/pedidoEntregas`, pedidoEntregaForm, {
-          observe: 'response',
-          responseType: 'text',
-        });
-      }
-      
-      update(id: number, pedidoEntregaForm: PedidoEntregaDTOFORM) {
-        return this.http.put(`${API_CONFIG.baseUrl}/pedidoEntregas/${id}`, pedidoEntregaForm, {
-          observe: 'response',
-          responseType: 'text',
-        });
-      }
+    insert(pedidoEntrega: PedidoEntregaDTO){
+      return this.http.post(`${API_CONFIG.baseUrl}/pedidoEntregas`, 
+                              pedidoEntrega, {
+                                  observe: 'response', 
+                                  responseType: 'text'
+                              });
+  }
+
+  update(pedidoEntrega: PedidoEntregaDTO){
+      return this.http.put(`${API_CONFIG.baseUrl}/pedidoEntregas/${pedidoEntrega.id}`, 
+                              pedidoEntrega, {
+                                  observe: 'response', 
+                                  responseType: 'text'
+                              });
+  }
       
 
     delete(id: number){

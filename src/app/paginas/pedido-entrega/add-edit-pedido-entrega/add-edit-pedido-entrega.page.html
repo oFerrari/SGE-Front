@@ -2,7 +2,7 @@
   <ion-toolbar>
 
     <ion-buttons slot="start">
-      <ion-back-button defaultHref=""></ion-back-button>
+      <ion-back-button defaultHref="/tabs"></ion-back-button>
     </ion-buttons>
 
     <ion-title>
@@ -15,6 +15,13 @@
 <ion-content [fullscreen]="true">
 
   <form [formGroup]="pedidoEntregaForm" *ngIf="pedidoEntregaForm" (ngSubmit)="submit()">
+
+    <ion-select formControlName="clienteId">
+      <ion-label position="floating">Clientes</ion-label>
+      <ion-select-option *ngFor="let cliente of clientes" [value]="cliente.id">
+        {{ cliente.nome }}
+      </ion-select-option>
+    </ion-select>
 
     <ion-item>
       <ion-label position="floating">Descrição</ion-label>
@@ -41,10 +48,12 @@
       <ion-datetime formControlName="dataEntrega" display-format="DD/MM/YYYY HH:mm"></ion-datetime>
     </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">Nome do Veículo</ion-label>
-      <ion-input formControlName="nomeVeiculo" type="text"></ion-input>
-    </ion-item>
+    <ion-select formControlName="veiculoId">
+      <ion-label position="floating">Nome do Veiculo</ion-label>
+      <ion-select-option *ngFor="let veiculo of veiculos" [value]="veiculo.id">
+        {{ veiculo.modelo }}
+      </ion-select-option>
+    </ion-select>
 
     <ion-select formControlName="statusPedido">
       <ion-select-option value="PENDENTE">Pendente</ion-select-option>
@@ -52,7 +61,7 @@
       <ion-select-option value="ATRASADO">Atrasado</ion-select-option>
       <ion-select-option value="CONCLUIDO">Concluído</ion-select-option>
     </ion-select>
-    
+
 
     <ion-button shape="round" expand="block" padding type="submit" *ngIf="!modoDeEdicao">
       Cadastrar

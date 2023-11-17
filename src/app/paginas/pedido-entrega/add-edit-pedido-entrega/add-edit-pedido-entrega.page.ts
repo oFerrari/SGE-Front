@@ -36,15 +36,16 @@ export class AddEditPedidoEntregaPage implements OnInit {
         console.log('Payload for Insert:', payload);
     
         this.pedidoEntregaService.insert(payload).subscribe(response => {
-          this.presentAlert('Sucesso', 'O pedidoEntrega foi salvo com sucesso', ['Ok']);
+          this.presentAlert('Sucesso', 'O pedido foi salvo com sucesso', ['Ok']);
         });
       }
     
       if (this.modoDeEdicao) {
-        const id = this.pedidoEntregaForm.value.id; // Obtenha o ID do formulário
-    const payload = { ...this.pedidoEntregaForm.value, id };
-        this.pedidoEntregaService.update(id, payload).subscribe(response => {
-          this.presentAlert('Sucesso', 'O pedidoEntrega foi atualizado com sucesso', ['Ok']);
+        const payload =this.pedidoEntregaForm.value;
+        console.log('Payload for Update:', payload);
+    
+        this.pedidoEntregaService.update(payload).subscribe(response => {
+          this.presentAlert('Sucesso', 'O pedido foi atualizado com sucesso', ['Ok']);
         });
       }
     }

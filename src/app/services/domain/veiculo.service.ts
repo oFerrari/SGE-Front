@@ -3,7 +3,7 @@ import { Observable } from "rxjs/internal/Observable";
 import { Injectable } from "@angular/core";
 import { API_CONFIG } from "../../config/api.config";
 import { VeiculoDTO } from "src/app/models/VeiculoDTO";
-import { MotoristaDTO } from "src/app/models/MotoristaDTO";
+
 
 @Injectable()
 export class VeiculoService {
@@ -21,10 +21,7 @@ export class VeiculoService {
             `${API_CONFIG.baseUrl}/veiculos/${id}`);
     }
 
-    findMotoristaById(id: number): Observable<MotoristaDTO> {
-        return this.http.get<MotoristaDTO>(`${API_CONFIG.baseUrl}/motoristas/${id}`);
-    }
-
+    
     insert(veiculo: VeiculoDTO) {
         return this.http.post(`${API_CONFIG.baseUrl}/veiculos`,
             veiculo, {
