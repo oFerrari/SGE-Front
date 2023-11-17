@@ -2,7 +2,7 @@
   <ion-toolbar>
 
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tabs"></ion-back-button>
+      <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
     </ion-buttons>
 
     <ion-title>
@@ -16,46 +16,46 @@
 
   <form [formGroup]="pedidoEntregaForm" *ngIf="pedidoEntregaForm" (ngSubmit)="submit()">
 
-    <ion-select formControlName="clienteId">
-      <ion-label position="floating">Clientes</ion-label>
+    <ion-select formControlName="clienteId" label="Selecione um cliente" fill="outline"  justify="space-between">
+      <ion-label position="floating"></ion-label>
       <ion-select-option *ngFor="let cliente of clientes" [value]="cliente.id">
         {{ cliente.nome }}
       </ion-select-option>
     </ion-select>
 
     <ion-item>
-      <ion-label position="floating">Descrição</ion-label>
+      <ion-label position="floating" fill="outline">Descrição</ion-label>
       <ion-input formControlName="mercadoria" type="text"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating">Origem</ion-label>
+      <ion-label position="floating" fill="outline">Origem</ion-label>
       <ion-input formControlName="origem" type="text"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating">Destino</ion-label>
+      <ion-label position="floating" fill="outline">Destino</ion-label>
       <ion-input formControlName="destino" type="text"></ion-input>
     </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">Emissão</ion-label>
-      <ion-datetime formControlName="emissao" display-format="DD/MM/YYYY HH:mm"></ion-datetime>
+    <ion-item class="custom-calendar-icon" [ngClass]="{'calendar-open': isCalendarOpen}">
+      <ion-label position="floating" placeholder="Data de Entrega" fill="outline">Data de Entrega</ion-label>
+      <ion-datetime formControlName="dataEntrega" display-format="DD/MM/YYYY HH:mm" max="2100-12-31"
+        [ngStyle]="{'position': isCalendarOpen ? 'relative' : 'absolute'}"
+        (ionFocus)="openCalendar()" (ionBlur)="closeCalendar()">
+      </ion-datetime>
+      <ion-icon name="calendar" size="large" color="primary" class="custom-calendar-icon" (click)="toggleCalendar()"></ion-icon>
     </ion-item>
+    
 
-    <ion-item>
-      <ion-label position="floating">Data de Entrega</ion-label>
-      <ion-datetime formControlName="dataEntrega" display-format="DD/MM/YYYY HH:mm"></ion-datetime>
-    </ion-item>
-
-    <ion-select formControlName="veiculoId">
+    <ion-select formControlName="veiculoId" label="Selecione um veiculo" fill="outline" justify="space-between">
       <ion-label position="floating">Nome do Veiculo</ion-label>
       <ion-select-option *ngFor="let veiculo of veiculos" [value]="veiculo.id">
         {{ veiculo.modelo }}
       </ion-select-option>
     </ion-select>
 
-    <ion-select formControlName="statusPedido">
+    <ion-select formControlName="statusPedido" label="Status" fill="outline">
       <ion-select-option value="PENDENTE">Pendente</ion-select-option>
       <ion-select-option value="EM_TRANSITO">Em Trânsito</ion-select-option>
       <ion-select-option value="ATRASADO">Atrasado</ion-select-option>

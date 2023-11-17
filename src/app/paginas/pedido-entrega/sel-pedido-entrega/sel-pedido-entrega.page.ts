@@ -12,6 +12,7 @@ export class SelPedidoEntregaPage implements OnInit {
   pedidoEntregas: PedidoEntregaDTO[] = [];
   pedidoEntregaSelecionadoId: number | null = null;
   searchTerm: string = '';
+  detalhesVisiveis: boolean = false;
 
   constructor(
     public pedidoEntregaService: PedidoEntregaService,
@@ -41,14 +42,17 @@ export class SelPedidoEntregaPage implements OnInit {
     });
 
     return filteredPedidoEntregas;
-  }
+  } 
+  
 
   detalhesPedidoEntrega(pedidoEntregaId: number) {
     this.pedidoEntregaSelecionadoId = pedidoEntregaId;
+    this.detalhesVisiveis = true
   }
 
   fecharDetalhesPedidoEntrega() {
     this.pedidoEntregaSelecionadoId = null;
+    this.detalhesVisiveis = false
   }
 
   addEditPedidoEntrega() {

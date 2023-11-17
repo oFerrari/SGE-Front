@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { AlertController, NavController } from '@ionic/angular';
+import { AlertController, IonDatetime, NavController, PickerController } from '@ionic/angular';
 import { ClienteService } from 'src/app/services/domain/cliente.service';
 import { MotoristaService } from 'src/app/services/domain/motorista.service';
 import { PedidoEntregaService } from 'src/app/services/domain/pedidoEntrega.service';
@@ -18,6 +18,9 @@ export class AddEditPedidoEntregaPage implements OnInit {
   pedidoEntregaForm!: FormGroup;
   clientes: any[] = [];
   veiculos: any[] = [];
+
+  dataEntregaControl = new FormControl();
+  isCalendarOpen = false;
 
   constructor(private formBuilder: FormBuilder,
     private alertController: AlertController,
@@ -63,14 +66,12 @@ export class AddEditPedidoEntregaPage implements OnInit {
       this.pedidoEntregaService.findById(id).subscribe(response => {
         this.pedidoEntregaForm = this.formBuilder.group({
           id: [response.id],
-          nomeCliente: [response.nomeCliente, Validators.required],
           mercadoria: [response.mercadoria, Validators.required],
           origem: [response.origem, Validators.required],
           destino: [response.destino, Validators.required],
           emissao: [new Date(response.emissao), Validators.required],
           dataEntrega: [new Date(response.dataEntrega), Validators.required],
           statusPedido: [response.statusPedido, Validators.required],
-          nomeVeiculo: [response.nomeVeiculo, Validators.required],
           clienteId: [response.cliente ? response.cliente.id : null, Validators.required],
           veiculoId: [response.veiculo ? response.veiculo.id : null, Validators.required],
         });
@@ -79,14 +80,12 @@ export class AddEditPedidoEntregaPage implements OnInit {
       this.modoDeEdicao = false;
       this.pedidoEntregaForm = this.formBuilder.group({
         id,
-        nomeCliente: ['', Validators.required],
         mercadoria: ['', Validators.required],
         origem: ['', Validators.required],
         destino: ['', Validators.required],
         emissao: [new Date(), Validators.required],
         dataEntrega: [new Date(), Validators.required],
         statusPedido: ['', Validators.required],
-        nomeVeiculo: ['', Validators.required],
         clienteId: ['', Validators.required],
         veiculoId: ['', Validators.required],
       });
@@ -138,4 +137,18 @@ export class AddEditPedidoEntregaPage implements OnInit {
   }
 
 
+  /*======================== EVENTOS ESPECIFICOS=============================== */
+
+  openCalendar() {
+    this.isCalendarOpen = true;
+  }
+
+  closeCalendar() {
+    this.isCalendarOpen = false;
+  }
+
+  toggleCalendar() {
+    this.isCalendarOpen = !this.isCalendarOpen;
+  }
+  
 }

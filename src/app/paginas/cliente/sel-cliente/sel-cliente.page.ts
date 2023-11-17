@@ -103,3 +103,5 @@ export class SelClientePage implements OnInit {
     
   }
 }
+
+/* this.cdRef.detectChanges(); */
