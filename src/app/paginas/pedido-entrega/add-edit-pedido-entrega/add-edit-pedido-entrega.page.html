@@ -16,7 +16,7 @@
 
   <form [formGroup]="pedidoEntregaForm" *ngIf="pedidoEntregaForm" (ngSubmit)="submit()">
 
-    <ion-select formControlName="clienteId" label="Selecione um cliente" fill="outline"  justify="space-between">
+    <ion-select formControlName="clienteId" label="Selecione um Cliente..." fill="solid"  justify="space-between">
       <ion-label position="floating"></ion-label>
       <ion-select-option *ngFor="let cliente of clientes" [value]="cliente.id">
         {{ cliente.nome }}
@@ -48,14 +48,14 @@
     </ion-item>
     
 
-    <ion-select formControlName="veiculoId" label="Selecione um veiculo" fill="outline" justify="space-between">
+    <ion-select formControlName="veiculoId" label="Selecione um veiculo" fill="solid" justify="space-between">
       <ion-label position="floating">Nome do Veiculo</ion-label>
       <ion-select-option *ngFor="let veiculo of veiculos" [value]="veiculo.id">
         {{ veiculo.modelo }}
       </ion-select-option>
     </ion-select>
 
-    <ion-select formControlName="statusPedido" label="Status" fill="outline">
+    <ion-select formControlName="statusPedido" label="Status" fill="solid">
       <ion-select-option value="PENDENTE">Pendente</ion-select-option>
       <ion-select-option value="EM_TRANSITO">Em Trânsito</ion-select-option>
       <ion-select-option value="ATRASADO">Atrasado</ion-select-option>
@@ -63,11 +63,11 @@
     </ion-select>
 
 
-    <ion-button shape="round" expand="block" padding type="submit" *ngIf="!modoDeEdicao">
+    <ion-button class="custom-button" shape="round" expand="block" padding type="submit" *ngIf="!modoDeEdicao">
       Cadastrar
     </ion-button>
 
-    <ion-button shape="round" expand="block" padding type="submit" *ngIf="modoDeEdicao">
+    <ion-button class="custom-button" shape="round" expand="block" padding type="submit" *ngIf="modoDeEdicao">
       Alterar
     </ion-button>
   </form>

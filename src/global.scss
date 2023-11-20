@@ -24,3 +24,28 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+
+
+  
+  ion-title {
+    font-size: 1.5em; /* Tamanho da fonte do título */
+  }
+  
+  ion-content {
+    padding: 15px; /* Espaçamento interno do conteúdo */
+  }
+  
+  ion-item {
+    margin-bottom: 10px; /* Espaçamento inferior entre itens */
+  }
+  
+  ion-button {
+    margin-top: 15px; /* Espaçamento superior dos botões */
+
+    
+  }
+
+  .custom-button {
+    top: 20px; /* Ajuste a margem conforme necessário para subir os botões */
+  }
+
