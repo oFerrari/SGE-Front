@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, NavController } from '@ionic/angular';
-import { PedidoEntregaDTO } from 'src/app/models/PedidoEntregaDTO';
+import { PedidoEntregaDTO, StatusPedido } from 'src/app/models/PedidoEntregaDTO';
 import { PedidoEntregaService } from 'src/app/services/domain/pedidoEntrega.service';
 
 @Component({
@@ -13,21 +13,22 @@ export class SelPedidoEntregaPage implements OnInit {
   pedidoEntregaSelecionadoId: number | null = null;
   searchTerm: string = '';
   detalhesVisiveis: boolean = false;
+  public isCartMoving = false;
 
   constructor(
     public pedidoEntregaService: PedidoEntregaService,
     private navController: NavController,
     private alertController: AlertController,
-  ) {}
+  ) { }
 
-  ionViewDidEnter(){
+  ionViewDidEnter() {
     this.pedidoEntregaService.findAll()
-                           .subscribe({
-                              next: 
-                                (response) => this.pedidoEntregas = response,                              
-                              error:
-                                (error) => console.log(error)
-                           });
+      .subscribe({
+        next:
+          (response) => this.pedidoEntregas = response,
+        error:
+          (error) => console.log(error)
+      });
   }
 
   filterPedidoEntregas(): PedidoEntregaDTO[] {
@@ -37,13 +38,13 @@ export class SelPedidoEntregaPage implements OnInit {
 
     const filteredPedidoEntregas = this.pedidoEntregas.filter((pedidoEntrega) => {
       return pedidoEntrega.nomeCliente.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-        pedidoEntrega.destino.toLowerCase().includes(this.searchTerm.toLowerCase()) || 
+        pedidoEntrega.destino.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
         pedidoEntrega.dataEntrega
     });
 
     return filteredPedidoEntregas;
-  } 
-  
+  }
+
 
   detalhesPedidoEntrega(pedidoEntregaId: number) {
     this.pedidoEntregaSelecionadoId = pedidoEntregaId;
@@ -104,7 +105,21 @@ export class SelPedidoEntregaPage implements OnInit {
     await alert.present();
   }
 
+  public iniciarAnimacaoCarrinho(pedidoEntregaId: number) {
+    // Encontra o pedido selecionado na lista
+    const pedidoSelecionado = this.pedidoEntregas.find(pedido => pedido.id === pedidoEntregaId);
+
+    // Verifica se encontrou o pedido e se o status é EM_TRANSITO
+    if (pedidoSelecionado && pedidoSelecionado.statusPedido === StatusPedido.EM_TRANSITO) {
+      // Inicia a animação
+      this.isCartMoving = true;
+    } else {
+
+      this.isCartMoving = false;
+    }
+  }
+
   ngOnInit() {
-    
+
   }
 }

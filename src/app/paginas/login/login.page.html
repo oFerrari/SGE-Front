@@ -1,5 +1,6 @@
 <ion-content [fullscreen]="true">
-  <ion-img src="/assets/logo-anpede.png"></ion-img>
+  <ion-img src="/assets/logo-sge.png" id="logo-sge"></ion-img>
+  <h1>SGE</h1>
   <p>Sistema de Gerenciamento de Entregas</p>
   <form>
     <ion-item>
@@ -11,6 +12,7 @@
       <ion-input type="password"></ion-input>
     </ion-item>
     <ion-button expand="block" (click)="logar()">Acessar</ion-button>
+
+    <ion-button expand="block" fill="outline" (click)="registrar()">Registrar</ion-button>
   </form>
-  <ion-button expand="block" fill="outline" (click)="registrar()">Registrar</ion-button>
 </ion-content>

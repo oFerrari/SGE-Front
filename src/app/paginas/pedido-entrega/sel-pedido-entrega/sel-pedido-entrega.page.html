@@ -18,34 +18,38 @@
 
   <ion-list>
     <ion-searchbar animated="true" [(ngModel)]="searchTerm" placeholder="Pesquise por nome ou cnh"></ion-searchbar>
-  <ion-item-sliding *ngFor="let pedidoEntrega of filterPedidoEntregas()">
-    <ion-item *ngIf="!detalhesVisiveis">
-      <ion-label>
-        <h2>{{pedidoEntrega.nomeCliente}}</h2>
-        <p>{{pedidoEntrega.destino}}</p>
-        <p>{{pedidoEntrega.emissao}}</p>
-        <p>{{pedidoEntrega.statusPedido}}</p>
-        <ion-button (click)="detalhesPedidoEntrega(pedidoEntrega.id)">
-          Ver Detalhes
-        </ion-button>
-      </ion-label>
-    </ion-item>
+    <ion-item-sliding *ngFor="let pedidoEntrega of filterPedidoEntregas()">
+      {{ iniciarAnimacaoCarrinho(pedidoEntrega.id) }} 
+      <ion-item *ngIf="!detalhesVisiveis">
+        <ion-label>
+          <div class="nome-gif">
+            <h2>{{pedidoEntrega.nomeCliente}}</h2>
+            <ion-icon *ngIf="!isCartMoving" [name]="'play'" class="cart-icon"></ion-icon>
+            <img *ngIf="isCartMoving" src="../../../../assets/caminhao.gif" id="carrinho-gif" class="cart-animation" />
+          </div>
+          <p>{{pedidoEntrega.destino}}</p>
+          <p>{{ pedidoEntrega.emissao}}</p>
+          <ion-button (click)="detalhesPedidoEntrega(pedidoEntrega.id)">
+            Ver Detalhes
+          </ion-button>
+        </ion-label>
+      </ion-item>
 
-    <ion-card *ngIf="pedidoEntregaSelecionadoId === pedidoEntrega.id">
-      <ion-card-header>
-        <ion-card-title>{{pedidoEntrega.nomeCliente}}</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>Descrição: {{pedidoEntrega.mercadoria}}</p>
-        <p>Origem: {{pedidoEntrega.origem}}</p>
-        <p>Endereço: {{pedidoEntrega.destino}}</p>
-        <p>Emissão: {{pedidoEntrega.emissao}}</p>
-        <p>Data Entrega: {{pedidoEntrega.dataEntrega}}</p>
-        <p>Veiculo: {{pedidoEntrega.nomeVeiculo}}</p>         
-        <p>{{pedidoEntrega.statusPedido}}</p>        
-      </ion-card-content>
-      <ion-button (click)="fecharDetalhesPedidoEntrega()">Fechar Detalhes</ion-button>
-    </ion-card>
+      <ion-card *ngIf="pedidoEntregaSelecionadoId === pedidoEntrega.id">
+        <ion-card-header>
+          <ion-card-title>{{pedidoEntrega.nomeCliente}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p>Descrição: {{pedidoEntrega.mercadoria}}</p>
+          <p>Origem: {{pedidoEntrega.origem}}</p>
+          <p>Destino: {{pedidoEntrega.destino}}</p>
+          <p>Emissão: {{pedidoEntrega.emissao}}</p>
+          <p>Data Entrega: {{pedidoEntrega.dataEntrega}}</p>
+          <p>Veiculo: {{pedidoEntrega.nomeVeiculo}}</p>
+          <p>{{pedidoEntrega.statusPedido}}</p>
+        </ion-card-content>
+        <ion-button (click)="fecharDetalhesPedidoEntrega()">Fechar Detalhes</ion-button>
+      </ion-card>
 
       <ion-item-options side="end">
         <ion-item-option routerLink="/add-edit-pedidoEntrega/{{pedidoEntrega.id}}">

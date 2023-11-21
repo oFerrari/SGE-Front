@@ -6,3 +6,19 @@
     cursor: pointer;
     display: flex;
   }
+
+  #carrinho-gif {
+    width: 50px; /* Ajuste o tamanho conforme necessário */
+    height: 50px; /* Ajuste o tamanho conforme necessário */
+    margin-left: 10px; /* Ajuste o espaçamento conforme necessário */
+  }
+  
+  .cart-icon {
+    font-size: 30px; /* Ajuste o tamanho conforme necessário */
+  }
+
+  
+  .nome-gif{
+    display: flex;
+    justify-content: space-between;
+  }
