@@ -64,6 +64,7 @@ export class AddEditPedidoEntregaPage implements OnInit {
     if (id > 0) {
       this.modoDeEdicao = true;
       this.pedidoEntregaService.findById(id).subscribe(response => {
+        console.log(response)
         this.pedidoEntregaForm = this.formBuilder.group({
           id: [response.id],
           mercadoria: [response.mercadoria, Validators.required],
@@ -72,6 +73,8 @@ export class AddEditPedidoEntregaPage implements OnInit {
           emissao: [new Date(response.emissao), Validators.required],
           dataEntrega: [new Date(response.dataEntrega), Validators.required],
           statusPedido: [response.statusPedido, Validators.required],
+          cliente: [response.cliente, Validators.required],
+          veiculo: [response.veiculo, Validators.required],
           clienteId: [response.cliente ? response.cliente.id : null, Validators.required],
           veiculoId: [response.veiculo ? response.veiculo.id : null, Validators.required],
         });

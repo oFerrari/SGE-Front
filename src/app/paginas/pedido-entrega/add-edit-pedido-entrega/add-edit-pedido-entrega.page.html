@@ -16,7 +16,7 @@
 
   <form [formGroup]="pedidoEntregaForm" *ngIf="pedidoEntregaForm" (ngSubmit)="submit()">
 
-    <ion-select formControlName="clienteId" label="Selecione um Cliente..." fill="solid"  justify="space-between">
+    <ion-select formControlName="clienteId" label="Selecione um Cliente..." fill="solid" justify="space-between">
       <ion-label position="floating"></ion-label>
       <ion-select-option *ngFor="let cliente of clientes" [value]="cliente.id">
         {{ cliente.nome }}
@@ -41,12 +41,13 @@
     <ion-item class="custom-calendar-icon" [ngClass]="{'calendar-open': isCalendarOpen}">
       <ion-label position="floating" placeholder="Data de Entrega" fill="outline">Data de Entrega</ion-label>
       <ion-datetime formControlName="dataEntrega" display-format="DD/MM/YYYY HH:mm" max="2100-12-31"
-        [ngStyle]="{'position': isCalendarOpen ? 'relative' : 'absolute'}"
-        (ionFocus)="openCalendar()" (ionBlur)="closeCalendar()">
+        [ngStyle]="{'position': isCalendarOpen ? 'relative' : 'absolute'}" (ionFocus)="openCalendar()"
+        (ionBlur)="closeCalendar()">
       </ion-datetime>
-      <ion-icon name="calendar" size="large" color="primary" class="custom-calendar-icon" (click)="toggleCalendar()"></ion-icon>
+      <ion-icon name="calendar" size="large" color="primary" class="custom-calendar-icon"
+        (click)="toggleCalendar()"></ion-icon>
     </ion-item>
-    
+
 
     <ion-select formControlName="veiculoId" label="Selecione um veiculo" fill="solid" justify="space-between">
       <ion-label position="floating">Nome do Veiculo</ion-label>
