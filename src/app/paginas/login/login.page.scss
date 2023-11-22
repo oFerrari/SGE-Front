@@ -1,25 +1,42 @@
 ion-content {
     padding: 10px;
-    display: flex;
     justify-content: center;
     align-items: center;
 }
 
-p {
+p, #titulo {
     text-align: center;
     font-weight: 600;
-    color: black;
-
+    color: #703a03;
 }
 
-h1{
-    text-align: center;
-    font-weight: bold;
-}
-
-#logo-sge{
+#logo-sge {
     width: 175px;
     height: 175px;
     margin: auto; /* Center the element horizontally */
-    display: block; 
+    display: block;     
+}
+
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:900');
+
+svg {
+    background: #ffffff;
+    text-align: center;
+    width: 100%;
+}
+
+text {
+    fill: #703a03;
+    filter: url('#money');
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-size: 55px;
+    margin: auto;
+}
+
+html {
+    align-items: center;
+    background: #ebe7e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

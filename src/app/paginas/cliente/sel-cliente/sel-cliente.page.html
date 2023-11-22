@@ -10,20 +10,27 @@
 
 <ion-content [fullscreen]="true">
 
-  <ion-fab slot="fixed" vertical="bottom" 
-           horizontal="end" [edge]="true">
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end" [edge]="true">
     <ion-fab-button routerLink="/add-edit-cliente/-1">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 
   <ion-list>
-    <ion-searchbar animated="true" [(ngModel)]="searchTerm" placeholder="Pesquise por nome ou endereço"></ion-searchbar>
-    <ion-item-sliding *ngFor="let cliente of filterClientes()" >
-      <ion-item>
+    <ion-searchbar animated="true" [(ngModel)]="searchTerm" placeholder="Nome ou Endereço"></ion-searchbar>
+    <ion-item-sliding *ngFor="let cliente of filterClientes()">
+      <ion-item [button]="true">
+
         <ion-label>
-          <h2>{{cliente.nome}}</h2>
+          <div class="nome-avatar">
+          <ion-avatar aria-hidden="true" slot="start">
+            <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+          </ion-avatar>
+          <div>
+          <ion-label>{{cliente.nome}}</ion-label>
           <p>{{cliente.endereco}}</p>
+        </div>
+        </div>
           <ion-button (click)="detalhesCliente(cliente.id)">
             Ver Detalhes
           </ion-button>
@@ -41,20 +48,18 @@
           <p>Telefone: {{cliente.telefone}}</p>
           <p>Email: {{cliente.email}}</p>
         </ion-card-content>
-        <ion-button (click)="fecharDetalhesCliente()">Fechar Detalhes</ion-button>
+        <ion-button class="bottom" (click)="fecharDetalhesCliente()">Fechar Detalhes</ion-button>
       </ion-card>
 
-      <ion-item-options side="end">
-        <ion-item-option routerLink="/add-edit-cliente/{{cliente.id}}">
-          <ion-icon slot="start" name="create"></ion-icon>
-          Editar
+      <ion-item-options slot="end">
+        <ion-item-option color="tertiary" routerLink="/add-edit-cliente/{{cliente.id}}">
+          <ion-icon slot="start" name="edited"></ion-icon>
         </ion-item-option>
-        <ion-item-option color="secondary" (click)="excluirCliente(cliente.id)">
-          <ion-icon slot="start" name="trash"></ion-icon>
-          Deletar
+        <ion-item-option color="warning" (click)="excluirCliente(cliente.id)">
+          <ion-icon class="icon-edit" slot="start" name="trash"></ion-icon>
         </ion-item-option>
       </ion-item-options>
-      
+
     </ion-item-sliding>
   </ion-list>
 

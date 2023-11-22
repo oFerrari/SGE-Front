@@ -129,7 +129,7 @@ export class AddEditPedidoEntregaPage implements OnInit {
         {
           text: 'Ok',
           handler: () => {
-            this.navController.navigateForward('tabs/tab2');
+            this.navController.navigateForward('tabs/tab1');
           }
         }
       ]
