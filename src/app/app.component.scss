@@ -1,0 +1,43 @@
+/* No arquivo CSS ou SCSS do seu componente (por exemplo, app.component.scss) */
+.inner-scroll{
+    background-color: #ea1d2c;
+}
+ion-menu {
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Sombra à direita para dar profundidade */
+  }
+  
+  ion-card {
+    border-radius: 15px; /* Borda mais arredondada */
+    background-color: #fff; /* Cor de fundo do card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  }
+  
+  ion-img {
+    border-radius: 15px; /* Ajuste conforme necessário para manter a borda superior arredondada */
+    width: 100%; /* Garante que a imagem ocupa 100% da largura do elemento pai */
+    height: 200px; /* Altura da imagem, ajuste conforme necessário */
+    object-fit: cover; /* Mantém a proporção da imagem */
+  }
+  
+  ion-card-title,
+  ion-item {    
+    color: #333; /* Cor do texto */
+    font-size: 18px;
+  }
+  
+  ion-menu-toggle {
+    margin-top: 20px; /* Espaçamento entre o card e o item de sair */
+  }
+  
+  ion-item {
+    padding: 12px; /* Ajuste conforme necessário para o espaçamento interno do item */
+    font-size: 14px; /* Tamanho da fonte do item */
+  }
+  
+
+  #signOut{
+    margin-top: 20%;
+    padding: 10px;
+    cursor: pointer;
+  }
+  

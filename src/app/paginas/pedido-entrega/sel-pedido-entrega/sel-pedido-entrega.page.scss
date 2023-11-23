@@ -7,7 +7,7 @@
     display: flex;
   }
 
-  #carrinho-gif {
+  .cart-icon {
     width: 80px; /* Ajuste o tamanho conforme necessário */
     height: 80px; /* Ajuste o tamanho conforme necessário */
     margin-left: 10px; /* Ajuste o espaçamento conforme necessário */
@@ -18,7 +18,7 @@
   }
 
   
-  .nome-gif{
+  #icones{
     display: flex;
     justify-content: space-between;
   }

@@ -23,6 +23,7 @@ export class AddEditClientePage implements OnInit {
               public clienteService: ClienteService) { }
 
   submit(){
+    if (this.clienteForm.valid) {
     if(!this.modoDeEdicao){
       this.clienteService.insert(this.clienteForm.value)
       .subscribe(response => {
@@ -40,7 +41,7 @@ export class AddEditClientePage implements OnInit {
          ['Ok'])
       })
     } 
-
+  }
   }
   
 

@@ -22,11 +22,11 @@
       </ion-select-option>
     </ion-select>
     
-    <ion-input formControlName="mercadoria" label="Descrição" label-position="floating" fill="outline"  type="text"></ion-input>
+    <ion-input class="input-form" formControlName="mercadoria" label="Descrição" label-placement="floating" fill="outline"  type="text"></ion-input>
     
-    <ion-input formControlName="origem" label="Origem" label-position="floating" fill="outline"  type="text"></ion-input>
+    <ion-input class="input-form" formControlName="origem" label="Origem" label-placement="floating" fill="outline"  type="text"></ion-input>
     
-    <ion-input formControlName="destino" label="Destino" label-position="floating" fill="outline"  type="text"></ion-input>
+    <ion-input class="input-form" formControlName="destino" label="Destino" label-placement="floating" fill="outline"  type="text"></ion-input>
     
     <ion-item class="custom-calendar-icon" [ngClass]="{'calendar-open': isCalendarOpen}">
       <ion-label position="floating" placeholder="Data de Entrega">Data de Entrega</ion-label>
@@ -51,14 +51,10 @@
       <ion-select-option value="CONCLUIDO">Concluído</ion-select-option>
     </ion-select>
 
-
-    <ion-button class="custom-button" shape="round" expand="block" padding type="submit" *ngIf="!modoDeEdicao">
-      Cadastrar
+    <ion-button class="custom-button" shape="round" expand="block" padding type="submit" [disabled]="!pedidoEntregaForm.valid">
+      {{ modoDeEdicao ? 'Alterar' : 'Cadastrar' }}
     </ion-button>
-
-    <ion-button class="custom-button" shape="round" expand="block" padding type="submit" *ngIf="modoDeEdicao">
-      Alterar
-    </ion-button>
+    
   </form>
 
 </ion-content>

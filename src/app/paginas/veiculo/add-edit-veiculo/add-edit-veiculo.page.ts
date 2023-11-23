@@ -25,7 +25,7 @@ export class AddEditVeiculoPage implements OnInit {
 
     submit() {
       console.log('Form Value:', this.veiculoForm.value);
-    
+      if (this.veiculoForm.valid) {
       if (!this.modoDeEdicao) {
         const payload = this.veiculoForm.value;
         console.log('Payload for Insert:', payload);
@@ -44,7 +44,7 @@ export class AddEditVeiculoPage implements OnInit {
         });
       }
     }
-    
+  }
 
 
   ngOnInit() {

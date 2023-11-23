@@ -1,3 +1,38 @@
-<ion-app>
-  <ion-router-outlet></ion-router-outlet>
-</ion-app>
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+
+    <ion-card *ngIf="administradorDTO">
+
+      <ion-card-content>
+        <ion-img src="../assets/dev.jpg" alt="Admin Photo"></ion-img>
+      </ion-card-content>
+
+      <ion-item>
+        <ion-card-title>{{ administradorDTO.email }}</ion-card-title>
+      </ion-item>
+    </ion-card>
+    <ion-list>
+
+      <!-- Outros campos do AdministradorDTO -->
+    </ion-list>
+    <ion-menu-toggle>
+
+      <ion-item id="signOut" (click)="signOut()">
+        <ion-icon name="exit-outline"></ion-icon>
+        Sign out
+      </ion-item>
+      
+
+    </ion-menu-toggle>
+
+  </ion-content>
+</ion-menu>
+
+<div class="ion-page" id="main-content">
+</div>
+<ion-router-outlet></ion-router-outlet>

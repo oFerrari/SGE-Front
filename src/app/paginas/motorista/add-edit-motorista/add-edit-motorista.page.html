@@ -13,21 +13,17 @@
 
 <ion-content [fullscreen]="true">
 
-  <form [formGroup]="motoristaForm" *ngIf="motoristaForm" (ngSubmit)="submit()">
-    <ion-input formControlName="nome" label="Nome" label-position="floating" type="text"></ion-input>
-    <ion-input formControlName="cnh" label="CNH" label-position="floating" type="text"></ion-input>
-    <ion-input formControlName="cpf" label="CPF" label-position="floating" type="text"></ion-input>
-    <ion-input formControlName="endereco" label="Endereço" label-position="floating" type="text"></ion-input>
-    <ion-input formControlName="telefone" label="Telefone" label-position="floating" type="text"></ion-input>
-    <ion-input formControlName="email" label="Email" label-position="floating" type="text"></ion-input>
+  <form [formGroup]="motoristaForm" *ngIf="motoristaForm" (submit)="submit()">
+    <ion-input class="input-form" formControlName="nome" label="Nome" label-placement="floating" fill="outline" type="text"></ion-input>
+    <ion-input class="input-form" formControlName="cnh" label="CNH" label-placement="floating" fill="outline" type="text"></ion-input>
+    <ion-input class="input-form" formControlName="cpf" label="CPF" label-placement="floating" fill="outline" type="text"></ion-input>
+    <ion-input class="input-form" formControlName="endereco" label="Endereço" label-placement="floating" fill="outline" type="text"></ion-input>
+    <ion-input class="input-form" formControlName="telefone" label="Telefone" label-placement="floating" fill="outline" type="text"></ion-input>
+    <ion-input class="input-form" formControlName="email" label="Email" label-placement="floating" fill="outline" type="text"></ion-input>
 
 
-    <ion-button class="custom-button" shape="round" expand="block" padding type="submit" *ngIf="!modoDeEdicao">
-      Cadastrar
-    </ion-button>
-
-    <ion-button class="custom-button" shape="round" expand="block" padding type="submit" *ngIf="modoDeEdicao">
-      Alterar
+    <ion-button class="custom-button" shape="round" expand="block" padding type="submit" [disabled]="!motoristaForm.valid">
+      {{ modoDeEdicao ? 'Alterar' : 'Cadastrar' }}
     </ion-button>
   </form>
 

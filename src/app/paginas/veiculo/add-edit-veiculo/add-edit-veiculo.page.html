@@ -8,36 +8,28 @@
     <ion-title>
       Veiculos
     </ion-title>
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
 
   <form [formGroup]="veiculoForm" *ngIf="veiculoForm" (ngSubmit)="submit()">
-    <ion-input formControlName="modelo" label="Modelo" label-position="floating" fill="outline"
-      type="text"></ion-input>
-    <ion-input formControlName="placa" label="Placa" label-position="floating" fill="outline"
-      type="text"></ion-input>
-    <ion-input formControlName="renavam" label="Renavam" label-position="floating" fill="outline"
-     type="text"></ion-input>
-    <ion-input formControlName="capacidade" label="Capacidade" label-position="floating" fill="outline"
-     type="text"></ion-input>
+    <ion-input class="input-form" formControlName="modelo" label="Modelo" label-placement="floating" fill="outline" type="text"></ion-input>
+    <ion-input class="input-form" formControlName="placa" label="Placa" label-placement="floating" fill="outline" type="text"></ion-input>
+    <ion-input class="input-form" formControlName="renavam" label="Renavam" label-placement="floating" fill="outline" type="text"></ion-input>
+    <ion-input class="input-form" formControlName="capacidade" label="Capacidade" label-placement="floating" fill="outline" type="text"></ion-input>
 
-    <ion-select formControlName="motoristaId" label="Motoristas" label-position="floating" fill="outline"
-      placeholder="Selecione um Motorista">
+    <ion-select class="input-form" formControlName="motoristaId" label="Motoristas" label-placement="floating" fill="outline" placeholder="Selecione um Motorista">
       <ion-select-option *ngFor="let motorista of motoristas" [value]="motorista.id">
         {{ motorista.nome }}
       </ion-select-option>
     </ion-select>
 
-
-    <ion-button class="custom-button" shape="round" expand="block" padding type="submit" *ngIf="!modoDeEdicao">
-      Cadastrar
+    <ion-button class="custom-button" shape="round" expand="block" padding type="submit" [disabled]="!veiculoForm.valid">
+      {{ modoDeEdicao ? 'Alterar' : 'Cadastrar' }}
     </ion-button>
 
-    <ion-button class="custom-button" shape="round" expand="block" padding type="submit" *ngIf="modoDeEdicao">
-      Alterar
-    </ion-button>
   </form>
 
 </ion-content>

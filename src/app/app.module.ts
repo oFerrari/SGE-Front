@@ -11,12 +11,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { MotoristaService } from './services/domain/motorista.service';
 import { VeiculoService } from './services/domain/veiculo.service';
 import { PedidoEntregaService } from './services/domain/pedidoEntrega.service';
+import { AdministradorService } from './services/domain/administrador.service';
 
 
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, HttpClientModule, IonicModule.forRoot(), AppRoutingModule, RouterModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, ClienteService, MotoristaService, VeiculoService, PedidoEntregaService],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, ClienteService, MotoristaService, VeiculoService, PedidoEntregaService, AdministradorService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

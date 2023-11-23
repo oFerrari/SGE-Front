@@ -56,12 +56,6 @@ const routes: Routes = [
     loadChildren: () => import('./paginas/administrador/add-edit-administrador/add-edit-administrador.module').then( m => m.AddEditAdministradorPageModule)
   },
 
-
-
-
-
-
-
 ];
 @NgModule({
   imports: [

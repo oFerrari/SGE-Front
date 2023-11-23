@@ -34,6 +34,7 @@ export class AddEditPedidoEntregaPage implements OnInit {
     submit() {
       console.log('Form Value:', this.pedidoEntregaForm.value);
     
+      if (this.pedidoEntregaForm.valid) {
       if (!this.modoDeEdicao) {
         const payload = this.pedidoEntregaForm.value;
         console.log('Payload for Insert:', payload);
@@ -52,7 +53,7 @@ export class AddEditPedidoEntregaPage implements OnInit {
         });
       }
     }
-    
+  }
 
 
   ngOnInit() {
@@ -88,7 +89,7 @@ export class AddEditPedidoEntregaPage implements OnInit {
         destino: ['', Validators.required],
         emissao: [new Date(), Validators.required],
         dataEntrega: ['', Validators.required],
-        statusPedido: ['', Validators.required],
+        statusPedido: ['PENDENTE', Validators.required],
         clienteId: ['', Validators.required],
         veiculoId: ['', Validators.required],
       });

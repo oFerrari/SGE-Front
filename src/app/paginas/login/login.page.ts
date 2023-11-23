@@ -11,24 +11,24 @@ export class LoginPage implements OnInit {
   constructor(public nav: NavController,
     public menu: MenuController) { }
 
-  ionViewWillEnter(){
+  ionViewWillEnter() {
     this.menu.enable(false);
   }
 
-  ionViewDidLeave(){
+  ionViewDidLeave() {
     this.menu.enable(true);
   }
 
-  logar(){
-    this.nav.navigateForward('tabs/tab1');
+  logar() {
+      this.nav.navigateForward('tabs/tab1');
   }
 
-  registrar(){
-    this.nav.navigateForward('add-associado');
+  registrar() {
+    this.nav.navigateForward('add-edit-administrador');
   }
 
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {  }
+  
 }
+

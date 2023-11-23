@@ -21,23 +21,22 @@ export class AddEditMotoristaPage implements OnInit {
               public motoristaService: MotoristaService) { }
 
   submit(){
-    if(!this.modoDeEdicao){
-      this.motoristaService.insert(this.motoristaForm.value)
-      .subscribe(response => {
-       this.presentAlert('Sucesso',
-         'O motorista foi salvo com sucesso',
-         ['Ok']);
-      })
+   
+    if (this.motoristaForm.valid) {
+      if (!this.modoDeEdicao) {
+        this.motoristaService.insert(this.motoristaForm.value)
+          .subscribe(response => {
+            this.presentAlert('Sucesso', 'O motorista foi salvo com sucesso', ['Ok']);
+          });
+      } else {
+        this.motoristaService.update(this.motoristaForm.value)
+          .subscribe(response => {
+            this.presentAlert('Sucesso', 'O motorista foi atualizado com sucesso', ['Ok']);
+          });
+      }
+    } else {
+      console.log("Formulário inválido. Preencha todos os campos obrigatórios.");
     }
-
-    if(this.modoDeEdicao){
-      this.motoristaService.update(this.motoristaForm.value)
-      .subscribe(response => {
-       this.presentAlert('Sucesso',
-         'O motorista foi atualizado com sucesso',
-         ['Ok'])
-      })
-    } 
 
   }
   
