@@ -10,16 +10,16 @@
 
 <ion-content [fullscreen]="true">
 
-  <ion-fab slot="fixed" vertical="bottom" horizontal="end" [edge]="true">
+  <ion-fab class="add" slot="fixed" vertical="bottom" horizontal="end" [edge]="true">
     <ion-fab-button routerLink="/add-edit-veiculo/-1">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 
   <ion-list>
-    <ion-searchbar animated="true" [(ngModel)]="searchTerm" placeholder="Pesquise por nome ou cnh"></ion-searchbar>
+    <ion-searchbar animated="true" [(ngModel)]="searchTerm" placeholder="Modelo ou Placa"></ion-searchbar>
     <ion-item-sliding *ngFor="let veiculo of filterVeiculos()">
-      <ion-item>
+      <ion-item *ngIf="!detalhesVisiveis">
         <ion-label>
           <h2>{{veiculo.modelo}}</h2>
           <p>{{veiculo.placa}}</p>

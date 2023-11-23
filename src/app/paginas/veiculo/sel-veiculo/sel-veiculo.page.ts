@@ -12,6 +12,7 @@ export class SelVeiculoPage implements OnInit {
   veiculos: VeiculoDTO[] = [];
   veiculoSelecionadoId: number | null = null;
   searchTerm: string = '';
+  detalhesVisiveis: boolean = false;
   
 
   constructor(
@@ -46,10 +47,12 @@ export class SelVeiculoPage implements OnInit {
 
   detalhesVeiculo(veiculo: VeiculoDTO) {
     this.veiculoSelecionadoId = veiculo.id;
+    this.detalhesVisiveis = true
   }
 
   fecharDetalhesVeiculo() {
     this.veiculoSelecionadoId = null;
+    this.detalhesVisiveis = false
   }
 
   addEditVeiculo() {

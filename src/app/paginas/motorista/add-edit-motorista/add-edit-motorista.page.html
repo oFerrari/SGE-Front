@@ -2,7 +2,7 @@
   <ion-toolbar>
 
     <ion-buttons slot="start">
-      <ion-back-button defaultHref=""></ion-back-button>
+      <ion-back-button defaultHref="tabs/tab3"></ion-back-button>
     </ion-buttons>
 
     <ion-title>
@@ -14,30 +14,13 @@
 <ion-content [fullscreen]="true">
 
   <form [formGroup]="motoristaForm" *ngIf="motoristaForm" (ngSubmit)="submit()">
-    <ion-item>
-      <ion-label position="floating">Nome</ion-label>
-      <ion-input formControlName="nome" type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">CNH</ion-label>
-      <ion-input formControlName="cnh" type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">CPF</ion-label>
-      <ion-input formControlName="cpf" type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Endereço</ion-label>
-      <ion-input formControlName="endereco" type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Telefone</ion-label>
-      <ion-input formControlName="telefone" type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Email</ion-label>
-      <ion-input formControlName="email" type="text"></ion-input>
-    </ion-item>
+    <ion-input formControlName="nome" label="Nome" label-position="floating" type="text"></ion-input>
+    <ion-input formControlName="cnh" label="CNH" label-position="floating" type="text"></ion-input>
+    <ion-input formControlName="cpf" label="CPF" label-position="floating" type="text"></ion-input>
+    <ion-input formControlName="endereco" label="Endereço" label-position="floating" type="text"></ion-input>
+    <ion-input formControlName="telefone" label="Telefone" label-position="floating" type="text"></ion-input>
+    <ion-input formControlName="email" label="Email" label-position="floating" type="text"></ion-input>
+
 
     <ion-button class="custom-button" shape="round" expand="block" padding type="submit" *ngIf="!modoDeEdicao">
       Cadastrar

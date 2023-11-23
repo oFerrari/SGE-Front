@@ -12,6 +12,7 @@ export class SelClientePage implements OnInit {
   clientes: ClienteDTO[] = [];
   clienteSelecionadoId: number | null = null;
   searchTerm: string = '';
+  detalhesVisiveis: boolean = false;
 
   constructor(
     public clienteService: ClienteService,
@@ -44,10 +45,12 @@ export class SelClientePage implements OnInit {
 
   detalhesCliente(clienteId: number) {
     this.clienteSelecionadoId = clienteId;
+    this.detalhesVisiveis = true
   }
 
   fecharDetalhesCliente() {
     this.clienteSelecionadoId = null;
+    this.detalhesVisiveis = false
   }
 
   addEditCliente() {

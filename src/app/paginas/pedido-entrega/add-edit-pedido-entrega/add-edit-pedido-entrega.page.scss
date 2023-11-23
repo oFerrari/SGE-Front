@@ -1,26 +1,32 @@
 .custom-calendar-icon {
-    position: relative;
-  
-    ion-datetime {
-      position: relative;
-      opacity: 0;
-      pointer-events: none;
-      top: 10%;
-      font-size: 14px;
-    }
-  
-    &.calendar-open ion-datetime {
-      opacity: 1;
-      pointer-events: auto;
-    }
-  
-    ion-icon {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        transform: translateY(0);
-        cursor: pointer;
-      }
-      
+  position: relative;
+
+  ion-datetime {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    pointer-events: none;
+    font-size: 14px;
   }
+
+  &.calendar-open ion-datetime {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  ion-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    transform: translateY(0);
+    cursor: pointer;
+  }
+}
+
   
+ion-select{
+  margin-top: 10px;
+}

@@ -10,7 +10,7 @@
 
 <ion-content [fullscreen]="true">
 
-  <ion-fab slot="fixed" vertical="bottom" horizontal="end" [edge]="true">
+  <ion-fab class="add" slot="fixed" vertical="bottom" horizontal="end" [edge]="true">
     <ion-fab-button routerLink="/add-edit-cliente/-1">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
@@ -19,7 +19,7 @@
   <ion-list>
     <ion-searchbar animated="true" [(ngModel)]="searchTerm" placeholder="Nome ou Endereço"></ion-searchbar>
     <ion-item-sliding *ngFor="let cliente of filterClientes()">
-      <ion-item [button]="true">
+      <ion-item *ngIf="!detalhesVisiveis" [button]="true">
 
         <ion-label>
           <div class="nome-avatar">

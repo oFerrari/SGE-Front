@@ -51,6 +51,11 @@ const routes: Routes = [
     path: 'add-edit-pedidoEntrega/:id',
     loadChildren: () => import('./paginas/pedido-entrega/add-edit-pedido-entrega/add-edit-pedido-entrega.module').then( m => m.AddEditPedidoEntregaPageModule)
   },
+  {
+    path: 'add-edit-administrador',
+    loadChildren: () => import('./paginas/administrador/add-edit-administrador/add-edit-administrador.module').then( m => m.AddEditAdministradorPageModule)
+  },
+
 
 
 

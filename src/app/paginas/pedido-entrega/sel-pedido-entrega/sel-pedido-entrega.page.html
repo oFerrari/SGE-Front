@@ -10,14 +10,14 @@
 
 <ion-content [fullscreen]="true">
 
-  <ion-fab slot="fixed" vertical="bottom" horizontal="end" [edge]="true">
+  <ion-fab class="add" slot="fixed" vertical="bottom" horizontal="end" [edge]="true">
     <ion-fab-button routerLink="/add-edit-pedidoEntrega/-1">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 
   <ion-list>
-    <ion-searchbar animated="true" [(ngModel)]="searchTerm" placeholder="Pesquise por nome ou cnh"></ion-searchbar>
+    <ion-searchbar animated="true" [(ngModel)]="searchTerm" placeholder="Nome ou Destino"></ion-searchbar>
     <ion-item-sliding *ngFor="let pedidoEntrega of filterPedidoEntregas()">
       {{ iniciarAnimacaoCarrinho(pedidoEntrega.id) }}
       <ion-item *ngIf="!detalhesVisiveis">
@@ -41,7 +41,7 @@
           </div>
           
           <p>{{pedidoEntrega.destino}}</p>
-          <p>{{ pedidoEntrega.emissao}}</p>
+          <p>{{pedidoEntrega.mercadoria}}</p>
           <ion-button (click)="detalhesPedidoEntrega(pedidoEntrega.id)">
             Ver Detalhes
           </ion-button>
@@ -58,7 +58,8 @@
           <p>Destino: {{pedidoEntrega.destino}}</p>
           <p>Emissão: {{pedidoEntrega.emissao}}</p>
           <p>Data Entrega: {{pedidoEntrega.dataEntrega}}</p>
-          <p>Veiculo: {{pedidoEntrega.nomeVeiculo}}</p>
+          <b>Veiculo:</b>
+          <p>{{pedidoEntrega.nomeVeiculo}}</p>
         </ion-card-content>
         <ion-button (click)="fecharDetalhesPedidoEntrega()">Fechar Detalhes</ion-button>
       </ion-card>

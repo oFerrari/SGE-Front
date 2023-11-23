@@ -41,8 +41,7 @@ export class SelPedidoEntregaPage implements OnInit {
 
     const filteredPedidoEntregas = this.pedidoEntregas.filter((pedidoEntrega) => {
       return pedidoEntrega.nomeCliente.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-        pedidoEntrega.destino.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-        pedidoEntrega.dataEntrega
+        pedidoEntrega.destino.toLowerCase().includes(this.searchTerm.toLowerCase())
     });
 
     return filteredPedidoEntregas;
