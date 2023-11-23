@@ -19,14 +19,27 @@
   <ion-list>
     <ion-searchbar animated="true" [(ngModel)]="searchTerm" placeholder="Pesquise por nome ou cnh"></ion-searchbar>
     <ion-item-sliding *ngFor="let pedidoEntrega of filterPedidoEntregas()">
-      {{ iniciarAnimacaoCarrinho(pedidoEntrega.id) }} 
+      {{ iniciarAnimacaoCarrinho(pedidoEntrega.id) }}
       <ion-item *ngIf="!detalhesVisiveis">
         <ion-label>
           <div class="nome-gif">
-            <h2>{{pedidoEntrega.nomeCliente}}</h2>
-            <ion-icon *ngIf="!isCartMoving" [name]="'play'" class="cart-icon"></ion-icon>
+            <h2>{{ pedidoEntrega.nomeCliente }}</h2>
+          
+            <!-- Exibe o ícone de play se o carrinho não estiver se movendo -->
+            <ion-icon *ngIf="!isCartMoving && !isPendente && !isLate && !isCompleted" [name]="'play'" class="cart-icon"></ion-icon>
+          
+            <!-- Exibe o gif do caminhão se o carrinho estiver se movendo -->
             <img *ngIf="isCartMoving" src="../../../../assets/caminhao-unscreen.gif" id="carrinho-gif" class="cart-animation" />
+          
+            <!-- Exibe o ícone radio-button-on-outline se o pedido estiver pendente -->
+            <ion-icon *ngIf="isPendente && !isCartMoving && !isLate && !isCompleted" src="../../../../assets/atrasado.svg" class="icon-svg"></ion-icon>
+          
+            <!-- Exibe o ícone de aviso se o pedido estiver atrasado -->
+            <ion-icon *ngIf="isLate && !isCartMoving && !isPendente && !isCompleted" name="warning-outline"></ion-icon>
+          
+            <!-- Adiciona outros ícones conforme necessário para outros estados de pedidos -->
           </div>
+          
           <p>{{pedidoEntrega.destino}}</p>
           <p>{{ pedidoEntrega.emissao}}</p>
           <ion-button (click)="detalhesPedidoEntrega(pedidoEntrega.id)">
@@ -46,17 +59,16 @@
           <p>Emissão: {{pedidoEntrega.emissao}}</p>
           <p>Data Entrega: {{pedidoEntrega.dataEntrega}}</p>
           <p>Veiculo: {{pedidoEntrega.nomeVeiculo}}</p>
-          <p>{{pedidoEntrega.statusPedido}}</p>
         </ion-card-content>
         <ion-button (click)="fecharDetalhesPedidoEntrega()">Fechar Detalhes</ion-button>
       </ion-card>
 
       <ion-item-options side="end">
-        <ion-item-option routerLink="/add-edit-pedidoEntrega/{{pedidoEntrega.id}}">
+        <ion-item-option color="secondary" routerLink="/add-edit-pedidoEntrega/{{pedidoEntrega.id}}">
           <ion-icon slot="start" name="create"></ion-icon>
           Editar
         </ion-item-option>
-        <ion-item-option color="secondary" (click)="excluirPedidoEntrega(pedidoEntrega.id)">
+        <ion-item-option (click)="excluirPedidoEntrega(pedidoEntrega.id)">
           <ion-icon slot="start" name="trash"></ion-icon>
           Deletar
         </ion-item-option>

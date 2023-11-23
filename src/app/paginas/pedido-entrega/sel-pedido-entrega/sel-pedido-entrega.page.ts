@@ -14,6 +14,9 @@ export class SelPedidoEntregaPage implements OnInit {
   searchTerm: string = '';
   detalhesVisiveis: boolean = false;
   public isCartMoving = false;
+  public isPendente = false;
+  public isLate = false;
+  public isCompleted = false;
 
   constructor(
     public pedidoEntregaService: PedidoEntregaService,
@@ -44,7 +47,6 @@ export class SelPedidoEntregaPage implements OnInit {
 
     return filteredPedidoEntregas;
   }
-
 
   detalhesPedidoEntrega(pedidoEntregaId: number) {
     this.pedidoEntregaSelecionadoId = pedidoEntregaId;
@@ -106,16 +108,27 @@ export class SelPedidoEntregaPage implements OnInit {
   }
 
   public iniciarAnimacaoCarrinho(pedidoEntregaId: number) {
-    // Encontra o pedido selecionado na lista
+
     const pedidoSelecionado = this.pedidoEntregas.find(pedido => pedido.id === pedidoEntregaId);
 
-    // Verifica se encontrou o pedido e se o status é EM_TRANSITO
     if (pedidoSelecionado && pedidoSelecionado.statusPedido === StatusPedido.EM_TRANSITO) {
-      // Inicia a animação
       this.isCartMoving = true;
-    } else {
-
+    }else {
       this.isCartMoving = false;
+    }
+    if(pedidoSelecionado && pedidoSelecionado.statusPedido === StatusPedido.PENDENTE){
+      this.isPendente = true
+    }else {
+      this.isPendente = false;
+    }
+    if(pedidoSelecionado && pedidoSelecionado.statusPedido === StatusPedido.ATRASADO){
+      this.isLate = true
+    }else {
+      this.isLate = false;
+    }if(pedidoSelecionado && pedidoSelecionado.statusPedido === StatusPedido.CONCLUIDO){
+      this.isCompleted = true
+    }else {
+      this.isCompleted = false;
     }
   }
 

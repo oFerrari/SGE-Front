@@ -52,11 +52,12 @@
       </ion-card>
 
       <ion-item-options slot="end">
-        <ion-item-option color="tertiary" routerLink="/add-edit-cliente/{{cliente.id}}">
-          <ion-icon slot="start" name="edited"></ion-icon>
+        <ion-item-option color="secondary"  routerLink="/add-edit-cliente/{{cliente.id}}">
+          <ion-icon slot="start" name="create"></ion-icon>Editar
         </ion-item-option>
-        <ion-item-option color="warning" (click)="excluirCliente(cliente.id)">
-          <ion-icon class="icon-edit" slot="start" name="trash"></ion-icon>
+
+        <ion-item-option (click)="excluirCliente(cliente.id)">
+          <ion-icon slot="start" name="trash"></ion-icon>Deletar
         </ion-item-option>
       </ion-item-options>
 

@@ -8,8 +8,8 @@
   }
 
   #carrinho-gif {
-    width: 50px; /* Ajuste o tamanho conforme necessário */
-    height: 50px; /* Ajuste o tamanho conforme necessário */
+    width: 80px; /* Ajuste o tamanho conforme necessário */
+    height: 80px; /* Ajuste o tamanho conforme necessário */
     margin-left: 10px; /* Ajuste o espaçamento conforme necessário */
   }
   
@@ -21,4 +21,11 @@
   .nome-gif{
     display: flex;
     justify-content: space-between;
+  }
+
+  .icon-svg{
+    width: 60px; /* Ajuste o tamanho conforme necessário */
+    height: 60px; /* Ajuste o tamanho conforme necessário */
+    margin-left: 10px;
+    color: yellow;
   }

@@ -12,6 +12,7 @@ export class SelMotoristaPage implements OnInit {
   motoristas: MotoristaDTO[] = [];
   motoristaSelecionadoId: number | null = null;
   searchTerm: string = '';
+  detalhesVisiveis: boolean = false;
 
   constructor(
     public motoristaService: MotoristaService,
@@ -44,10 +45,12 @@ export class SelMotoristaPage implements OnInit {
 
   detalhesMotorista(motoristaId: number) {
     this.motoristaSelecionadoId = motoristaId;
+    this.detalhesVisiveis = true
   }
 
   fecharDetalhesMotorista() {
     this.motoristaSelecionadoId = null;
+    this.detalhesVisiveis = false
   }
 
   addEditMotorista() {

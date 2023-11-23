@@ -43,9 +43,16 @@
     margin-top: 15px; /* Espaçamento superior dos botões */
   }
   
-
-  .icon-edit{
-    width: 25px;
-    height: 25px;
-    padding: 10px;
+  .custom-button {
+    margin-top: 20px;
+    border: 2px solid ; /* Substituí "bold" por "solid" para especificar um estilo de borda sólida */
+    --background: transparent; /* Cor de fundo personalizada *//* Cor de fundo verde semelhante ao iFood */
+    --color: #ea1d2c;
+    border-radius: 20px;
+    --box-shadow: none;
   }
+  .custom-button:hover {
+    background: #ea1d2c;
+    color: white;
+    transition: background 0.3s, color 0.3s;
+}
