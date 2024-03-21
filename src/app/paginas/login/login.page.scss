@@ -14,7 +14,17 @@ p, #titulo {
     width: 175px;
     height: 175px;
     margin: auto; /* Center the element horizontally */
-    display: block;     
+}
+
+#logo-administrador{
+    width: 30px;
+    height: 30px;
+}
+
+.topo{
+    display: flex;
+    padding-top: 25px;
+    padding-right: 15px
 }
 
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display:900');
@@ -38,5 +48,4 @@ html {
     background: #ebe7e0;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
