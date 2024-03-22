@@ -12,8 +12,7 @@ const routes: Routes = [
   },
   {
     path: 'add-edit-cliente/:id',
-    loadChildren: () => import('./paginas/cliente/add-edit-cliente/add-edit-cliente.module').then((m) => m.AddEditClientePageModule
-      ),
+    loadChildren: () => import('./paginas/cliente/add-edit-cliente/add-edit-cliente.module').then((m) => m.AddEditClientePageModule),
   },
   {
     path: 'sel-motorista',
@@ -55,6 +54,11 @@ const routes: Routes = [
     path: 'add-edit-administrador',
     loadChildren: () => import('./paginas/administrador/add-edit-administrador/add-edit-administrador.module').then( m => m.AddEditAdministradorPageModule)
   },
+  {
+    path: 'painel-administrador',
+    loadChildren: () => import('./paginas/administrador/painel-administrador/painel-administrador.module').then( m => m.PainelAdministradorPageModule)
+  },
+
 
 ];
 @NgModule({

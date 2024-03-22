@@ -19,8 +19,12 @@ export class LoginPage implements OnInit {
     this.menu.enable(true);
   }
 
-  logar() {
+  /* logar() {
       this.nav.navigateForward('tabs/tab1');
+  } */
+
+  logar() {
+      this.nav.navigateForward('painel-administrador');
   }
 
   registrar() {
@@ -31,4 +35,3 @@ export class LoginPage implements OnInit {
   ngOnInit() {  }
   
 }
-
