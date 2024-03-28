@@ -19,13 +19,17 @@ export class LoginPage implements OnInit {
     this.menu.enable(true);
   }
 
+  logar() {
+    window.open('http://localhost:4200/', '_self');
+  }
+  
   /* logar() {
       this.nav.navigateForward('tabs/tab1');
   } */
 
-  logar() {
+  /* logar() {
       this.nav.navigateForward('painel-administrador');
-  }
+  } */
 
   registrar() {
     this.nav.navigateForward('add-edit-administrador');
