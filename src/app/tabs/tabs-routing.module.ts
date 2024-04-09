@@ -38,7 +38,12 @@ const routes: Routes = [
     path: '', // Redirecionar a raiz para a tela de login
     redirectTo: 'login',
     pathMatch: 'full'
-  }
+  },
+  {
+    path: 'painel-administrador',
+    loadChildren: () => import('../paginas/painel-administrador/painel-administrador.module').then(m => m.PainelAdministradorPageModule)
+  },
+  
 ];
 
 @NgModule({

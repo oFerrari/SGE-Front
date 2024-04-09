@@ -1,0 +1,21 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>painel-administrador</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">painel-administrador</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Exibir a mensagem apenas se for um dispositivo móvel -->
+  <ion-card *ngIf="isMobile">
+    <ion-card-header>
+      Acesse esta página em um navegador web para obter a melhor experiência.
+    </ion-card-header>
+  </ion-card>
+
+</ion-content>

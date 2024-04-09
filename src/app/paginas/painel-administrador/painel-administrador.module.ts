@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 import { PainelAdministradorPageRoutingModule } from './painel-administrador-routing.module';
 
 import { PainelAdministradorPage } from './painel-administrador.page';
-import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 @NgModule({
   imports: [
@@ -16,9 +15,6 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
     IonicModule,
     PainelAdministradorPageRoutingModule
   ],
-  declarations: [PainelAdministradorPage],
-  providers: [
-    InAppBrowser, // Adicione o InAppBrowser aos providers
-  ]
+  declarations: [PainelAdministradorPage]
 })
 export class PainelAdministradorPageModule {}

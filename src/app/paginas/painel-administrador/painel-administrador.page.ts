@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
-import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 @Component({
   selector: 'app-painel-administrador',
@@ -10,18 +9,19 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 export class PainelAdministradorPage implements OnInit {
   isMobile: boolean = false;
 
-  constructor(private platform: Platform, private inAppBrowser: InAppBrowser) { }
+  constructor(private platform: Platform) { }
 
   ngOnInit() {
     // Verifica se a largura da tela é menor que 768 pixels (indicativo de um dispositivo móvel)
-    this.isMobile = window.innerWidth < 768;
+    this.isMobile = this.platform.width() < 768;
 
-    // Abre o navegador inAppBrowser apenas se estiver no modo mobile
+    // Abre a página em um navegador externo apenas se estiver no modo mobile
     if (this.isMobile) {
-
+      // Se for mobile, exibe a mensagem para abrir em um navegador web
+      console.log("Acesse esta página em um navegador web para obter a melhor experiência.");
     } else {
-      const browser = this.inAppBrowser.create('http://localhost:8201/painel-administrador', '_self');
-      browser.show();
+      // Se não for mobile, abre a página em um novo navegador
+      window.open('http://localhost:8100/painel-administrador', '_blank');
     }
   }
 }
