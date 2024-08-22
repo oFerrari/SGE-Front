@@ -15,6 +15,7 @@ export class AddEditAdministradorPage implements OnInit {
 
   administradorForm!: FormGroup;
   
+  
   constructor(private formBuilder: FormBuilder,
     private alertController: AlertController,
     private navController: NavController,
@@ -86,6 +87,23 @@ export class AddEditAdministradorPage implements OnInit {
     
 
     await alert.present();
+  }
+
+  onFileChange(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      // Você pode processar o arquivo aqui, por exemplo, armazená-lo no formulário ou enviá-lo para um servidor
+      console.log('Arquivo selecionado:', file);
+
+      // Se você deseja armazenar o arquivo no formulário, você pode fazer o seguinte:
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.administradorForm.patchValue({
+          foto: reader.result
+        });
+      };
+      reader.readAsDataURL(file); // Ou reader.readAsArrayBuffer(file) dependendo da necessidade
+    }
   }
 
 }
