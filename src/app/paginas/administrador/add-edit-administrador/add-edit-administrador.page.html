@@ -14,7 +14,7 @@
 <ion-content [fullscreen]="true">
 
   <form [formGroup]="administradorForm" *ngIf="administradorForm" (ngSubmit)="submit()">
-    <ion-input class="input-form" formControlName="foto" fill="outline" type="file" label="Foto">
+    <ion-input class="input-form" formControlName="foto" fill="outline" type="file" label="Foto" >
     </ion-input>
     <ion-input class="input-form" formControlName="email" label="Email" label-placement="floating" fill="outline" type="text"></ion-input>
     <ion-input class="input-form" formControlName="senha" label="Senha" placeholder="**********" type="password" value="password" label-placement="floating" fill="outline" type="text"></ion-input>
@@ -25,4 +25,4 @@
 
   </form>
 
-</ion-content>a
+</ion-content>
