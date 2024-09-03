@@ -10,7 +10,7 @@ import { MenuController, NavController } from '@ionic/angular';
 export class LoginPage implements OnInit {
   administradorForm: FormGroup;
 
-  private emailPredefinido: string = 'andrei.vinicius@estudante.ifms.edu.br ';
+  private emailPredefinido: string = 'andrei.vinicius@estudante.ifms.edu.br';
   private senhaPredefinida: string = '123456';
 
   constructor(public nav: NavController,
